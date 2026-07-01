@@ -1,0 +1,115 @@
+{% extends "accounts/dashboard_base.html" %}
+
+{% block title %}Crop Monitoring{% endblock %}
+
+{% block main_content %}
+<div class="dashboard-welcome">
+    <h2>Crop Monitoring</h2>
+    <p>Monitor your crops' health, growth stages, and conditions.</p>
+</div>
+
+<!-- Crop Monitoring Stats (Dummy values for now) -->
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon" style="background-color: rgba(76, 175, 80, 0.2);">
+            <i class="fas fa-leaf" style="color: #4CAF50;"></i>
+        </div>
+        <div class="stat-info">
+            <h3>Crop Health Index</h3>
+            <p class="stat-value">87<span>%</span></p>
+            <p class="stat-change positive"><i class="fas fa-arrow-up"></i> 4% improvement</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon" style="background-color: rgba(255, 193, 7, 0.2);">
+            <i class="fas fa-seedling" style="color: #FFC107;"></i>
+        </div>
+        <div class="stat-info">
+            <h3>Growth Stage</h3>
+            <p class="stat-value">Flowering</p>
+            <p class="stat-change neutral"><i class="fas fa-info-circle"></i> Avg across fields</p>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon" style="background-color: rgba(33, 150, 243, 0.2);">
+            <i class="fas fa-tint" style="color: #2196F3;"></i>
+        </div>
+        <div class="stat-info">
+            <h3>Soil Moisture</h3>
+            <p class="stat-value">72<span>%</span></p>
+            <p class="stat-change positive"><i class="fas fa-arrow-up"></i> 2% from last reading</p>
+        </div>
+    </div>
+</div>
+
+<form method="GET" class="filter-form">
+    <label for="crop_type">Crop Type:</label>
+    <select name="crop_type">
+        <option value="">All</option>
+        <option value="Corn">Corn</option>
+        <option value="Wheat">Wheat</option>
+        <option value="Rice">Rice</option>
+        <option value="Soybean">Soybean</option>
+        <option value="Barley">Barley</option>
+        <option value="Potato">Potato</option>
+        <option value="Tomato">Tomato</option>
+        <option value="Sugarcane">Sugarcane</option>
+    </select>
+
+    <label for="start">Start Date:</label>
+    <input type="date" name="start">
+
+    <label for="end">End Date:</label>
+    <input type="date" name="end">
+
+    <button type="submit">Filter</button>
+</form>
+
+<!-- Dynamic Crop Cards -->
+{% if crops %}
+    <div class="crop-cards-grid">
+        {% for crop in crops %}
+        <div class="crop-card">
+            <h2>{{ crop.name }}</h2>
+            <p><strong>Type:</strong> {{ crop.crop_type }}</p>
+            <p><strong>Location:</strong> {{ crop.location }}</p>
+            <p><strong>Area:</strong> {{ crop.area|floatformat:2 }} hectares</p>
+            <p><strong>Planted:</strong> {{ crop.planting_date }}</p>
+            <a href="#">View Details →</a>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <div class="crop-card">
+        <p>No crops available.</p>
+    </div>
+{% endif %}
+
+<!-- Placeholder for future charts/maps -->
+<div class="dashboard-section">
+    <h3>Satellite View (Coming Soon)</h3>
+    <div class="placeholder-box">Map and imaging integration will appear here.</div>
+</div>
+
+<div class="dashboard-section">
+    <h3>Soil Moisture Trend</h3>
+    <canvas id="moistureChart" width="400" height="200"></canvas>
+</div>
+
+<div class="dashboard-section">
+    <h3>Temperature Trend</h3>
+    <canvas id="tempChart" width="400" height="200"></canvas>
+</div>
+
+<div class="dashboard-section">
+    <h3>Humidity Trend</h3>
+    <canvas id="humidityChart" width="400" height="200"></canvas>
+</div>
+
+{% block extra_js %}
+    
+{% endblock %}
+
+{% endblock %}

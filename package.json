@@ -1,0 +1,31 @@
+{
+  "name": "agritech_platform",
+  "version": "1.0.0",
+  "description": "A modular, multi-channel platform for agricultural value chain digitisation.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+   "scripts": {
+    "dev:backend": "cd backend && npm run dev",
+    "dev:web": "cd web && npm run dev",
+    "dev:mobile": "cd mobile && npm start",
+    "dev:all": "concurrently \"npm run dev:backend\" \"npm run dev:web\" \"npm run dev:mobile\"",
+    "install:all": "npm install && cd backend && npm install && cd ../web && npm install && cd ../mobile && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kpmatlakala/Agritech_Platform.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/kpmatlakala/Agritech_Platform/issues"
+  },
+  "homepage": "https://github.com/kpmatlakala/Agritech_Platform#readme"
+}

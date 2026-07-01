@@ -1,0 +1,630 @@
+<!-- templates/crop-monitoring.html -->
+{% extends 'base.html' %}
+
+{% block title %}Crop Monitoring System{% endblock %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Monitoring System - AgriTech Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Agri<span>Tech</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="crop-monitoring.html" class="active">Crop Monitoring</a></li>
+                    <li><a href="livestock-management.html">Livestock Management</a></li>
+                    <li><a href="marketplace.html">Marketplace</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="login.html" class="nav-btn">Login</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Feature Hero Section -->
+    <section class="feature-hero">
+        <div class="container">
+            <div class="feature-hero-content">
+                <div class="breadcrumbs">
+                    <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <span>Crop Monitoring</span>
+                </div>
+                <h1>Advanced Crop Monitoring System</h1>
+                <p>Real-time insights and analytics to optimize your crop health, growth, and yield</p>
+                <div class="feature-hero-buttons">
+                    <a href="#features" class="btn btn-primary">Explore Features</a>
+                    <a href="register.html" class="btn btn-secondary">Start Free Trial</a>
+                </div>
+            </div>
+            <div class="feature-hero-image">
+                <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Crop monitoring dashboard">
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Overview Section -->
+    <section class="feature-overview">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Our Crop Monitoring System?</h2>
+                <p>Comprehensive technology to transform your farming practices</p>
+            </div>
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Data-Driven Decisions</h3>
+                    <p>Make informed farming decisions based on real-time data and analytics</p>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Improved Crop Health</h3>
+                    <p>Early detection of diseases and pests to maintain optimal crop health</p>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3>Resource Optimization</h3>
+                    <p>Optimize water and fertilizer usage based on soil and crop needs</p>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h3>Increased Yield</h3>
+                    <p>Boost your crop yield by up to 30% with optimized growing conditions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Details Section -->
+    <section id="features" class="feature-details">
+        <div class="container">
+            <div class="section-header">
+                <h2>Comprehensive Monitoring Features</h2>
+                <p>Everything you need to monitor and optimize your crops</p>
+            </div>
+            
+            <!-- Weather Forecasting -->
+            <div class="feature-detail-item">
+                <div class="feature-detail-content">
+                    <div class="feature-detail-icon">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <div class="feature-detail-text">
+                        <h3>Weather Forecasting</h3>
+                        <p>Our system integrates with OpenWeatherMap API to provide accurate 10-day weather forecasts specific to your farm's location. Plan your farming activities with confidence based on reliable weather predictions.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Hyperlocal weather forecasts</li>
+                            <li><i class="fas fa-check"></i> Temperature, precipitation, and wind predictions</li>
+                            <li><i class="fas fa-check"></i> Severe weather alerts</li>
+                            <li><i class="fas fa-check"></i> Historical weather data analysis</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="feature-detail-image">
+                    <img src="https://images.unsplash.com/photo-1592210454359-9043f067919b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Weather forecasting">
+                </div>
+            </div>
+            
+            <!-- Soil Analysis -->
+            <div class="feature-detail-item reverse">
+                <div class="feature-detail-content">
+                    <div class="feature-detail-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <div class="feature-detail-text">
+                        <h3>Soil Analysis & Monitoring</h3>
+                        <p>Our advanced soil sensors provide real-time data on soil moisture, temperature, and nutrient levels. Understand your soil's needs and optimize irrigation and fertilization for maximum crop health.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Real-time soil moisture tracking</li>
+                            <li><i class="fas fa-check"></i> Nutrient level monitoring (N, P, K)</li>
+                            <li><i class="fas fa-check"></i> Soil pH and temperature tracking</li>
+                            <li><i class="fas fa-check"></i> Customized irrigation recommendations</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="feature-detail-image">
+                    <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Soil analysis">
+                </div>
+            </div>
+            
+            <!-- Pest & Disease Detection -->
+            <div class="feature-detail-item">
+                <div class="feature-detail-content">
+                    <div class="feature-detail-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <div class="feature-detail-text">
+                        <h3>Pest & Disease Detection</h3>
+                        <p>Our AI-powered image recognition system can identify early signs of pests and diseases from drone or smartphone images. Catch problems before they spread and take targeted action to protect your crops.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Early detection of 100+ common crop diseases</li>
+                            <li><i class="fas fa-check"></i> Pest identification and population monitoring</li>
+                            <li><i class="fas fa-check"></i> Treatment recommendations</li>
+                            <li><i class="fas fa-check"></i> Outbreak risk assessment</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="feature-detail-image">
+                    <img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Pest detection">
+                </div>
+            </div>
+            
+            <!-- Yield Prediction -->
+            <div class="feature-detail-item reverse">
+                <div class="feature-detail-content">
+                    <div class="feature-detail-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div class="feature-detail-text">
+                        <h3>Yield Prediction & Analysis</h3>
+                        <p>Our machine learning algorithms analyze multiple data points to predict crop yields with remarkable accuracy. Plan your harvest, storage, and sales with confidence based on reliable yield forecasts.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> AI-powered yield forecasting</li>
+                            <li><i class="fas fa-check"></i> Historical yield comparison</li>
+                            <li><i class="fas fa-check"></i> Yield optimization recommendations</li>
+                            <li><i class="fas fa-check"></i> Harvest timing optimization</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="feature-detail-image">
+                    <img src="https://images.unsplash.com/photo-1625244724120-1fd1d34d00f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Yield prediction">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Preview Section -->
+    <section class="dashboard-preview-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Intuitive Crop Monitoring Dashboard</h2>
+                <p>All your crop data in one easy-to-use interface</p>
+            </div>
+            <div class="dashboard-preview-wrapper">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Crop monitoring dashboard" class="dashboard-image">
+                
+                <div class="dashboard-features">
+                    <div class="dashboard-feature">
+                        <div class="feature-number">1</div>
+                        <div class="feature-text">
+                            <h4>Field Overview</h4>
+                            <p>View all your fields at a glance with key metrics and alerts</p>
+                        </div>
+                    </div>
+                    <div class="dashboard-feature">
+                        <div class="feature-number">2</div>
+                        <div class="feature-text">
+                            <h4>Weather Forecast</h4>
+                            <p>10-day weather predictions specific to your location</p>
+                        </div>
+                    </div>
+                    <div class="dashboard-feature">
+                        <div class="feature-number">3</div>
+                        <div class="feature-text">
+                            <h4>Soil Conditions</h4>
+                            <p>Real-time soil moisture, temperature, and nutrient levels</p>
+                        </div>
+                    </div>
+                    <div class="dashboard-feature">
+                        <div class="feature-number">4</div>
+                        <div class="feature-text">
+                            <h4>Growth Tracking</h4>
+                            <p>Monitor crop growth stages and compare to expected timelines</p>
+                        </div>
+                    </div>
+                    <div class="dashboard-feature">
+                        <div class="feature-number">5</div>
+                        <div class="feature-text">
+                            <h4>Alert System</h4>
+                            <p>Receive notifications about potential issues requiring attention</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-cta">
+                <a href="dashboard.html" class="btn btn-primary">View Demo Dashboard</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hardware Section -->
+    <section class="hardware-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Hardware Solutions</h2>
+                <p>Cutting-edge sensors and devices that power our crop monitoring system</p>
+            </div>
+            <div class="hardware-grid">
+                <div class="hardware-card">
+                    <div class="hardware-image">
+                        <img src="https://images.unsplash.com/photo-1611078489935-0cb964de46d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Soil sensors">
+                    </div>
+                    <div class="hardware-content">
+                        <h3>Soil Sensors</h3>
+                        <p>Wireless sensors that measure soil moisture, temperature, and nutrient levels</p>
+                        <ul class="hardware-specs">
+                            <li><i class="fas fa-battery-full"></i> 12-month battery life</li>
+                            <li><i class="fas fa-wifi"></i> 1.5 km wireless range</li>
+                            <li><i class="fas fa-tint"></i> ±2% moisture accuracy</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+                <div class="hardware-card">
+                    <div class="hardware-image">
+                        <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Weather station">
+                    </div>
+                    <div class="hardware-content">
+                        <h3>Weather Stations</h3>
+                        <p>On-farm weather stations that provide hyperlocal weather data</p>
+                        <ul class="hardware-specs">
+                            <li><i class="fas fa-sun"></i> Solar powered</li>
+                            <li><i class="fas fa-wind"></i> Wind, rain, temp, humidity sensors</li>
+                            <li><i class="fas fa-broadcast-tower"></i> 4G/LTE connectivity</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+                <div class="hardware-card">
+                    <div class="hardware-image">
+                        <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Agricultural drone">
+                    </div>
+                    <div class="hardware-content">
+                        <h3>Agricultural Drones</h3>
+                        <p>Automated drones for aerial imaging and crop monitoring</p>
+                        <ul class="hardware-specs">
+                            <li><i class="fas fa-clock"></i> 45-minute flight time</li>
+                            <li><i class="fas fa-camera"></i> 20MP RGB + multispectral cameras</li>
+                            <li><i class="fas fa-map-marked-alt"></i> Automated flight planning</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Flexible Pricing Plans</h2>
+                <p>Choose the plan that fits your farm's needs</p>
+            </div>
+            <div class="pricing-toggle">
+                <span>Monthly</span>
+                <label class="switch">
+                    <input type="checkbox" id="pricingToggle">
+                    <span class="slider round"></span>
+                </label>
+                <span>Annual <span class="discount">Save 20%</span></span>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Basic</h3>
+                        <div class="pricing-price">
+                            <span class="price monthly">$49</span>
+                            <span class="price annual">$39</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <p>For small farms up to 50 acres</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Weather forecasting</li>
+                            <li><i class="fas fa-check"></i> Basic soil monitoring</li>
+                            <li><i class="fas fa-check"></i> Pest & disease alerts</li>
+                            <li><i class="fas fa-check"></i> Mobile app access</li>
+                            <li class="disabled"><i class="fas fa-times"></i> Yield prediction</li>
+                            <li class="disabled"><i class="fas fa-times"></i> Advanced analytics</li>
+                            <li class="disabled"><i class="fas fa-times"></i> API access</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="register.html" class="btn btn-outline btn-block">Get Started</a>
+                    </div>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Professional</h3>
+                        <div class="pricing-price">
+                            <span class="price monthly">$99</span>
+                            <span class="price annual">$79</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <p>For medium farms up to 200 acres</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Weather forecasting</li>
+                            <li><i class="fas fa-check"></i> Advanced soil monitoring</li>
+                            <li><i class="fas fa-check"></i> Pest & disease detection</li>
+                            <li><i class="fas fa-check"></i> Mobile app access</li>
+                            <li><i class="fas fa-check"></i> Yield prediction</li>
+                            <li><i class="fas fa-check"></i> Basic analytics</li>
+                            <li class="disabled"><i class="fas fa-times"></i> API access</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="register.html" class="btn btn-primary btn-block">Get Started</a>
+                    </div>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Enterprise</h3>
+                        <div class="pricing-price">
+                            <span class="price monthly">$199</span>
+                            <span class="price annual">$159</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <p>For large farms 200+ acres</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Weather forecasting</li>
+                            <li><i class="fas fa-check"></i> Advanced soil monitoring</li>
+                            <li><i class="fas fa-check"></i> Pest & disease detection</li>
+                            <li><i class="fas fa-check"></i> Mobile app access</li>
+                            <li><i class="fas fa-check"></i> Yield prediction</li>
+                            <li><i class="fas fa-check"></i> Advanced analytics</li>
+                            <li><i class="fas fa-check"></i> API access</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="register.html" class="btn btn-outline btn-block">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            <div class="pricing-note">
+                <p>All plans include a 14-day free trial. No credit card required.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials feature-testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Success Stories</h2>
+                <p>Hear from farmers who have transformed their operations with our crop monitoring system</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>The soil moisture sensors alone saved me thousands in irrigation costs. I'm now using 30% less water while maintaining better crop health. The ROI was evident within the first season.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Farmer">
+                        <div>
+                            <h4>John Farmer</h4>
+                            <p>Wheat Farmer, Kansas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>The pest detection system alerted me to an aphid infestation before it became visible to the naked eye. I was able to treat just the affected area instead of the entire field, saving both time and money.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson">
+                        <div>
+                            <h4>Sarah Johnson</h4>
+                            <p>Organic Farmer, California</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>The yield prediction has been remarkably accurate, within 5% of actual harvest. This has transformed how we plan our storage, transportation, and sales contracts. I wouldn't farm without it now.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Michael Rodriguez">
+                        <div>
+                            <h4>Michael Rodriguez</h4>
+                            <p>Corn Farmer, Iowa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-stats">
+                <div class="stat-item">
+                    <h3>30%</h3>
+                    <p>Average Yield Increase</p>
+                </div>
+                <div class="stat-item">
+                    <h3>25%</h3>
+                    <p>Water Usage Reduction</p>
+                </div>
+                <div class="stat-item">
+                    <h3>40%</h3>
+                    <p>Decrease in Crop Loss</p>
+                </div>
+                <div class="stat-item">
+                    <h3>1,000+</h3>
+                    <p>Farms Using Our System</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about our crop monitoring system</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What hardware do I need to get started?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>To get started with our basic plan, you'll need at least one soil sensor per field and access to our mobile app. For more advanced monitoring, we recommend adding our weather station and considering our drone services for aerial imaging.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How accurate is the weather forecasting?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our weather forecasting combines data from multiple sources, including the OpenWeatherMap API and our on-farm weather stations. This provides hyperlocal forecasts with over 90% accuracy for 3-day predictions and 80% accuracy for 7-day predictions.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can the system work with my existing irrigation setup?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, our system is designed to integrate with most modern irrigation systems. We provide API access in our Enterprise plan that allows for direct control of compatible irrigation systems based on soil moisture data.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How many sensors do I need per acre?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The number of sensors depends on your field's soil variability and crop type. As a general guideline, we recommend one soil sensor per 5-10 acres. Our team can help you determine the optimal sensor placement for your specific farm during setup.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do I need technical expertise to use the system?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>No technical expertise is required. Our system is designed to be user-friendly with an intuitive dashboard and mobile app. We also provide comprehensive onboarding and ongoing support to ensure you get the most out of our system.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What crops does the system support?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our system supports a wide range of crops including grains (wheat, corn, rice), fruits, vegetables, nuts, and specialty crops. The AI models are continuously updated to improve detection and analysis for different crop types.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="feature-cta">
+        <div class="container">
+            <h2>Ready to Transform Your Crop Management?</h2>
+            <p>Join thousands of farmers already using our crop monitoring system</p>
+            <div class="cta-buttons">
+                <a href="register.html" class="btn btn-primary">Start Free Trial</a>
+                <a href="#" class="btn btn-secondary">Schedule Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>Agri<span>Tech</span></h3>
+                    <p>Revolutionizing agriculture through innovative technology solutions for farmers worldwide.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="crop-monitoring.html">Crop Monitoring</a></li>
+                        <li><a href="livestock-management.html">Livestock Management</a></li>
+                        <li><a href="marketplace.html">Marketplace</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="#">Weather Forecasting</a></li>
+                        <li><a href="#">Soil Analysis</a></li>
+                        <li><a href="#">Pest Detection</a></li>
+                        <li><a href="#">Yield Prediction</a></li>
+                        <li><a href="#">RFID Tagging</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to our newsletter for the latest updates and insights.</p>
+                    <form>
+                        <input type="email" placeholder="Your Email">
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 AgriTech Solutions. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // Pricing Toggle
+        const pricingToggle = document.getElementById('pricingToggle');
+        const pricingCards = document.querySelectorAll('.pricing-card');
+
+        pricingToggle.addEventListener('change', () => {
+            pricingCards.forEach(card => {
+                if (pricingToggle.checked) {
+                    card.classList.add('annual');
+                } else {
+                    card.classList.remove('annual');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

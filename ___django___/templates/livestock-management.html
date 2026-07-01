@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livestock Management System - AgriTech Solutions</title>
+    <link rel="stylesheet" href="../django_project/static/css/styles.css">
+    <link rel="stylesheet" href="../django_project/static/css/feature-page.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Agri<span>Tech</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="crop-monitoring.html">Crop Monitoring</a></li>
+                    <li><a href="livestock-management.html" class="active">Livestock Management</a></li>
+                    <li><a href="marketplace.html">Marketplace</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="login.html" class="nav-btn">Login</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Feature Hero Section -->
+    <section class="feature-hero">
+        <div class="container">
+            <div class="feature-hero-content">
+                <div class="breadcrumbs">
+                    <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <span>Livestock Management</span>
+                </div>
+                <h1>Smart Livestock Management System</h1>
+                <p>Comprehensive monitoring and management solutions for optimal livestock health, productivity, and profitability</p>
+                <div class="feature-hero-buttons">
+                    <a href="#features" class="btn btn-primary">Explore Features</a>
+                    <a href="register.html" class="btn btn-secondary">Start Free Trial</a>
+                </div>
+            </div>
+            <div class="feature-hero-image">
+                <img src="https://images.unsplash.com/photo-1605611740084-05b5c349964b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Livestock monitoring">
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Overview Section -->
+    <section class="feature-overview">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Our Livestock Management System?</h2>
+                <p>Transforming traditional livestock farming with cutting-edge technology</p>
+            </div>
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Improved Animal Health</h3>
+                    <p>Early detection of health issues for timely intervention and reduced veterinary costs</p>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Increased Productivity</h3>
+                    <p>Optimize breeding cycles and feeding schedules for maximum yield</p>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Real-time Tracking</h3>
+                    <p>Know your animals' location and movement patterns at all times</p>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Cost Reduction</h3>
+                    <p>Reduce feed waste, prevent disease outbreaks, and optimize resources</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Details Section -->
+    <section id="features" class="feature-details">
+        <div class="container">
+            <div class="section-header">
+                <h2>Comprehensive Management Features</h2>
+                <p>Everything you need to monitor and optimize your livestock operation</p>
+            </div>
+            
+            <!-- Health Monitoring -->
+            <div class="feature-detail-item">
+                <div class="feature-detail-content">
+                    <div class="feature-detail-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="feature-detail-text">
+                        <h3>Health Monitoring</h3>
+                        <p>Our advanced wearable sensors continuously monitor vital health metrics of your livestock, providing real-time data and alerts for early detection of health issues before they become visible.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Body temperature monitoring</li>
+                            <li><i class="fas fa-check"></i> Activity level tracking</li>
+                            <li><i class="fas fa-check"></i> Rumination monitoring for cattle</li>
+                            <li><i class="fas fa-check"></i> Anomaly detection and health alerts</li>
+                            <li><i class="fas fa-check"></i> Automated veterinary notifications</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="feature-detail-image">
+                    <img src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1473&q=80" alt="Livestock health monitoring">
+                </div>
+            </div>
+            
+            <!-- RFID Tracking -->
+            <div class="feature-detail-item reverse">
+                <div class="feature-detail-content">
+                    <div class="feature-detail-icon">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <div class="feature-detail-text">
+                        <h3>RFID Tracking & Identification</h3>
+                        <p>Our RFID tagging system provides individual animal identification and real-time location tracking. Know where your animals are at all times and maintain comprehensive digital records for each animal.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Individual animal identification</li>
+                            <li><i class="fas fa-check"></i> Real-time location tracking</li>
+                            <li><i class="fas fa-check"></i> Movement pattern analysis</li>
+                            <li><i class="fas fa-check"></i> Automated headcount and inventory</li>
+                            <li><i class="fas fa-check"></i> Theft prevention and alerts</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="feature-detail-image">
+                    <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1380&q=80" alt="RFID livestock tracking">
+                </div>
+            </div>
+            
+            <!-- Breeding Management -->
+            <div class="feature-detail-item">
+                <div class="feature-detail-content">
+                    <div class="feature-detail-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="feature-detail-text">
+                        <h3>Breeding Management</h3>
+                        <p>Optimize your breeding program with our comprehensive breeding management system. Track reproductive cycles, manage breeding schedules, and maintain detailed genealogical records for genetic improvement.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Estrus detection and alerts</li>
+                            <li><i class="fas fa-check"></i> Breeding schedule optimization</li>
+                            <li><i class="fas fa-check"></i> Pregnancy tracking and due date predictions</li>
+                            <li><i class="fas fa-check"></i> Genetic record keeping and analysis</li>
+                            <li><i class="fas fa-check"></i> Breeding performance analytics</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="feature-detail-image">
+                    <img src="https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Livestock breeding management">
+                </div>
+            </div>
+            
+            <!-- Feed Optimization -->
+            <div class="feature-detail-item reverse">
+                <div class="feature-detail-content">
+                    <div class="feature-detail-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="feature-detail-text">
+                        <h3>Feed Optimization</h3>
+                        <p>Our intelligent feeding system helps you optimize feed formulations, schedules, and quantities based on animal needs, reducing waste and maximizing growth and production efficiency.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Automated feeding schedule management</li>
+                            <li><i class="fas fa-check"></i> Individual animal nutrition tracking</li>
+                            <li><i class="fas fa-check"></i> Feed consumption analytics</li>
+                            <li><i class="fas fa-check"></i> Feed conversion ratio monitoring</li>
+                            <li><i class="fas fa-check"></i> Cost optimization recommendations</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="feature-detail-image">
+                    <img src="https://images.unsplash.com/photo-1500595046743-cd271d694e30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80" alt="Livestock feed optimization">
+                </div>
+            </div>
+            
+            <!-- Disease Prevention -->
+            <div class="feature-detail-item">
+                <div class="feature-detail-content">
+                    <div class="feature-detail-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="feature-detail-text">
+                        <h3>Disease Prevention & Management</h3>
+                        <p>Our system helps you prevent disease outbreaks through early detection, automated quarantine recommendations, and comprehensive vaccination tracking to maintain optimal herd health.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Early disease detection algorithms</li>
+                            <li><i class="fas fa-check"></i> Automated quarantine recommendations</li>
+                            <li><i class="fas fa-check"></i> Vaccination scheduling and tracking</li>
+                            <li><i class="fas fa-check"></i> Disease outbreak prediction</li>
+                            <li><i class="fas fa-check"></i> Treatment protocol management</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="feature-detail-image">
+                    <img src="https://images.unsplash.com/photo-1604848698030-c434ba08ece1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Livestock disease prevention">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard Preview Section -->
+    <section class="dashboard-preview-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Intuitive Livestock Management Dashboard</h2>
+                <p>All your livestock data in one easy-to-use interface</p>
+            </div>
+            <div class="dashboard-preview-wrapper">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Livestock management dashboard" class="dashboard-image">
+                
+                <div class="dashboard-features">
+                    <div class="dashboard-feature">
+                        <div class="feature-number">1</div>
+                        <div class="feature-text">
+                            <h4>Herd Overview</h4>
+                            <p>View your entire herd at a glance with key health metrics and alerts</p>
+                        </div>
+                    </div>
+                    <div class="dashboard-feature">
+                        <div class="feature-number">2</div>
+                        <div class="feature-text">
+                            <h4>Individual Animal Profiles</h4>
+                            <p>Access detailed records for each animal including health, breeding, and production data</p>
+                        </div>
+                    </div>
+                    <div class="dashboard-feature">
+                        <div class="feature-number">3</div>
+                        <div class="feature-text">
+                            <h4>Health Monitoring</h4>
+                            <p>Real-time health metrics with anomaly detection and alerts</p>
+                        </div>
+                    </div>
+                    <div class="dashboard-feature">
+                        <div class="feature-number">4</div>
+                        <div class="feature-text">
+                            <h4>Location Tracking</h4>
+                            <p>Interactive map showing real-time location of all animals</p>
+                        </div>
+                    </div>
+                    <div class="dashboard-feature">
+                        <div class="feature-number">5</div>
+                        <div class="feature-text">
+                            <h4>Analytics & Reports</h4>
+                            <p>Comprehensive analytics on productivity, health trends, and financial performance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-cta">
+                <a href="dashboard.html" class="btn btn-primary">View Demo Dashboard</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hardware Section -->
+    <section class="hardware-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Hardware Solutions</h2>
+                <p>Cutting-edge devices that power our livestock management system</p>
+            </div>
+            <div class="hardware-grid">
+                <div class="hardware-card">
+                    <div class="hardware-image">
+                        <img src="https://images.unsplash.com/photo-1581093458791-9d15482442f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="RFID ear tags">
+                    </div>
+                    <div class="hardware-content">
+                        <h3>RFID Ear Tags</h3>
+                        <p>Durable, lightweight RFID ear tags for individual animal identification and tracking</p>
+                        <ul class="hardware-specs">
+                            <li><i class="fas fa-battery-full"></i> 5+ year lifespan</li>
+                            <li><i class="fas fa-weight"></i> Lightweight design (10g)</li>
+                            <li><i class="fas fa-broadcast-tower"></i> 100m read range</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+                <div class="hardware-card">
+                    <div class="hardware-image">
+                        <img src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Health monitoring collars">
+                    </div>
+                    <div class="hardware-content">
+                        <h3>Health Monitoring Collars</h3>
+                        <p>Smart collars that continuously monitor vital health metrics and activity levels</p>
+                        <ul class="hardware-specs">
+                            <li><i class="fas fa-sun"></i> Solar powered with battery backup</li>
+                            <li><i class="fas fa-heartbeat"></i> Temperature, activity, rumination sensors</li>
+                            <li><i class="fas fa-wifi"></i> Real-time data transmission</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+                <div class="hardware-card">
+                    <div class="hardware-image">
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Smart feeding systems">
+                    </div>
+                    <div class="hardware-content">
+                        <h3>Smart Feeding Systems</h3>
+                        <p>Automated feeding systems with individual animal recognition and precise feed dispensing</p>
+                        <ul class="hardware-specs">
+                            <li><i class="fas fa-cog"></i> Automated feed dispensing</li>
+                            <li><i class="fas fa-tag"></i> RFID animal recognition</li>
+                            <li><i class="fas fa-chart-bar"></i> Feed consumption tracking</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Flexible Pricing Plans</h2>
+                <p>Choose the plan that fits your livestock operation</p>
+            </div>
+            <div class="pricing-toggle">
+                <span>Monthly</span>
+                <label class="switch">
+                    <input type="checkbox" id="pricingToggle">
+                    <span class="slider round"></span>
+                </label>
+                <span>Annual <span class="discount">Save 20%</span></span>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Basic</h3>
+                        <div class="pricing-price">
+                            <span class="price monthly">$59</span>
+                            <span class="price annual">$47</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <p>For small operations up to 50 animals</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Basic health monitoring</li>
+                            <li><i class="fas fa-check"></i> RFID tracking</li>
+                            <li><i class="fas fa-check"></i> Basic breeding management</li>
+                            <li><i class="fas fa-check"></i> Mobile app access</li>
+                            <li class="disabled"><i class="fas fa-times"></i> Feed optimization</li>
+                            <li class="disabled"><i class="fas fa-times"></i> Advanced analytics</li>
+                            <li class="disabled"><i class="fas fa-times"></i> API access</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="register.html" class="btn btn-outline btn-block">Get Started</a>
+                    </div>
+                </div>
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Professional</h3>
+                        <div class="pricing-price">
+                            <span class="price monthly">$129</span>
+                            <span class="price annual">$103</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <p>For medium operations up to 200 animals</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Advanced health monitoring</li>
+                            <li><i class="fas fa-check"></i> RFID tracking with alerts</li>
+                            <li><i class="fas fa-check"></i> Comprehensive breeding management</li>
+                            <li><i class="fas fa-check"></i> Mobile app access</li>
+                            <li><i class="fas fa-check"></i> Feed optimization</li>
+                            <li><i class="fas fa-check"></i> Basic analytics</li>
+                            <li class="disabled"><i class="fas fa-times"></i> API access</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="register.html" class="btn btn-primary btn-block">Get Started</a>
+                    </div>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Enterprise</h3>
+                        <div class="pricing-price">
+                            <span class="price monthly">$249</span>
+                            <span class="price annual">$199</span>
+                            <span class="period">/month</span>
+                        </div>
+                        <p>For large operations 200+ animals</p>
+                    </div>
+                    <div class="pricing-features">
+                        <ul>
+                            <li><i class="fas fa-check"></i> Advanced health monitoring</li>
+                            <li><i class="fas fa-check"></i> RFID tracking with alerts</li>
+                            <li><i class="fas fa-check"></i> Comprehensive breeding management</li>
+                            <li><i class="fas fa-check"></i> Mobile app access</li>
+                            <li><i class="fas fa-check"></i> Feed optimization</li>
+                            <li><i class="fas fa-check"></i> Advanced analytics</li>
+                            <li><i class="fas fa-check"></i> API access</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-footer">
+                        <a href="register.html" class="btn btn-outline btn-block">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            <div class="pricing-note">
+                <p>All plans include a 14-day free trial. No credit card required.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials feature-testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Success Stories</h2>
+                <p>Hear from farmers who have transformed their livestock operations with our management system</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>The health monitoring system detected a fever in one of my cows 24 hours before I would have noticed any symptoms. This early detection prevented the spread to my entire herd and saved me thousands in treatment costs.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Robert Johnson">
+                        <div>
+                            <h4>Robert Johnson</h4>
+                            <p>Dairy Farmer, Wisconsin</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>The breeding management system has increased my calving rate by 15%. The estrus detection alerts are incredibly accurate, and the genetic tracking helps me make better breeding decisions.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Sarah Johnson">
+                        <div>
+                            <h4>Emily Martinez</h4>
+                            <p>Cattle Rancher, Texas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>The feed optimization system reduced my feed costs by 22% while maintaining the same growth rates. The ROI was evident within just three months of implementation.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="Michael Rodriguez">
+                        <div>
+                            <h4>James Wilson</h4>
+                            <p>Pig Farmer, Iowa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-stats">
+                <div class="stat-item">
+                    <h3>25%</h3>
+                    <p>Reduction in Veterinary Costs</p>
+                </div>
+                <div class="stat-item">
+                    <h3>15%</h3>
+                    <p>Increase in Reproduction Rates</p>
+                </div>
+                <div class="stat-item">
+                    <h3>20%</h3>
+                    <p>Decrease in Feed Costs</p>
+                </div>
+                <div class="stat-item">
+                    <h3>800+</h3>
+                    <p>Farms Using Our System</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about our livestock management system</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What types of livestock does your system support?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our system is designed to work with all major livestock types including cattle (dairy and beef), pigs, sheep, goats, and poultry. The hardware and software are customized based on the specific needs of each animal type.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How durable are the RFID tags and health monitoring devices?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our RFID tags and monitoring devices are designed specifically for harsh farm environments. They are water-resistant, dust-proof, and built to withstand impacts. The RFID tags have a 5+ year lifespan, while the health monitoring collars typically last 3-4 years with proper maintenance.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can the system integrate with my existing farm management software?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, our Enterprise plan includes API access that allows for integration with most popular farm management software. We currently have direct integrations with FarmERP, Agrivi, and Farmbrite, with more being added regularly. Our team can also develop custom integrations for specific needs.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How accurate is the health monitoring system?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our health monitoring system has been validated in multiple university studies with an accuracy rate of over 92% for detecting common health issues 24-48 hours before visible symptoms appear. The system continuously improves through machine learning as more data is collected.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do I need internet connectivity in my barns or pastures?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our system uses a mesh network of base stations that can operate with minimal connectivity. You'll need internet at your main farm office, but the base stations can relay data from remote areas. For very large operations, we offer satellite connectivity options for areas without cellular coverage.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How much time does it take to implement the system?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Basic implementation can be completed in 1-2 days for small operations. For medium to large operations, we recommend a phased approach over 1-2 weeks. Our team provides comprehensive training and support throughout the implementation process to ensure a smooth transition.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="feature-cta">
+        <div class="container">
+            <h2>Ready to Transform Your Livestock Management?</h2>
+            <p>Join hundreds of farmers already using our livestock management system</p>
+            <div class="cta-buttons">
+                <a href="register.html" class="btn btn-primary">Start Free Trial</a>
+                <a href="#" class="btn btn-secondary">Schedule Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>Agri<span>Tech</span></h3>
+                    <p>Revolutionizing agriculture through innovative technology solutions for farmers worldwide.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="crop-monitoring.html">Crop Monitoring</a></li>
+                        <li><a href="livestock-management.html">Livestock Management</a></li>
+                        <li><a href="marketplace.html">Marketplace</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Solutions</h4>
+                    <ul>
+                        <li><a href="#">RFID Tracking</a></li>
+                        <li><a href="#">Health Monitoring</a></li>
+                        <li><a href="#">Breeding Management</a></li>
+                        <li><a href="#">Feed Optimization</a></li>
+                        <li><a href="#">Disease Prevention</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to our newsletter for the latest updates and insights.</p>
+                    <form>
+                        <input type="email" placeholder="Your Email">
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 AgriTech Solutions. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // Pricing Toggle
+        const pricingToggle = document.getElementById('pricingToggle');
+        const pricingCards = document.querySelectorAll('.pricing-card');
+
+        pricingToggle.addEventListener('change', () => {
+            pricingCards.forEach(card => {
+                if (pricingToggle.checked) {
+                    card.classList.add('annual');
+                } else {
+                    card.classList.remove('annual');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!-- templates/accounts/account_dashboard -->
+
+{% extends 'accounts/dashboard_base.html' %}
+
+{% block title %}Your Dashboard{% endblock %}
+
+{% block main_content %}
+<div class="dashboard-welcome">
+    <h2>Welcome back, {{ user.first_name }}!</h2>
+    <p>Here's what's happening on your farm today</p>
+</div>
+
+<!-- Stats Overview -->
+<div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon" style="background-color: rgba(76, 175, 80, 0.2);">
+            <i class="fas fa-leaf" style="color: #4CAF50;"></i>
+        </div>
+        <div class="stat-info">
+            <h3>Crop Health</h3>
+            <p class="stat-value">92<span>%</span></p>
+            <p class="stat-change positive"><i class="fas fa-arrow-up"></i> 3% from last week</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background-color: rgba(33, 150, 243, 0.2);">
+            <i class="fas fa-tint" style="color: #2196F3;"></i>
+        </div>
+        <div class="stat-info">
+            <h3>Soil Moisture</h3>
+            <p class="stat-value">68<span>%</span></p>
+            <p class="stat-change positive"><i class="fas fa-arrow-up"></i> 5% from yesterday</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background-color: rgba(255, 160, 0, 0.2);">
+            <i class="fas fa-sun" style="color: #FFA000;"></i>
+        </div>
+        <div class="stat-info">
+            <h3>Temperature</h3>
+            <p class="stat-value">24<span>°C</span></p>
+            <p class="stat-change negative"><i class="fas fa-arrow-down"></i> 2°C from yesterday</p>
+        </div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon" style="background-color: rgba(233, 30, 99, 0.2);">
+            <i class="fas fa-heartbeat" style="color: #E91E63;"></i>
+        </div>
+        <div class="stat-info">
+            <h3>Livestock Health</h3>
+            <p class="stat-value">96<span>%</span></p>
+            <p class="stat-change neutral"><i class="fas fa-equals"></i> Same as last week</p>
+        </div>
+    </div>
+</div>
+
+<!-- Main Dashboard Sections -->
+<div class="dashboard-grid">
+    <!-- Weather Widget -->
+    <div class="dashboard-widget weather-widget">
+        <div class="widget-header">
+            <h3><i class="fas fa-cloud-sun"></i> Weather Forecast</h3>
+            <div class="widget-actions">
+                <button type="submit" form="weather-refresh"><i class="fas fa-sync-alt"></i></button>
+            </div>
+        </div>
+        <div class="widget-content">
+            <form id="weather-refresh" method="get" class="filter-form" style="margin-bottom: 18px;">
+                <input type="text" name="city" placeholder="Enter city" value="{{ city }}" required>
+                <button type="submit">🔍</button>
+            </form>
+            {% if weather.error %}
+                <p>{{ weather.error }}</p>
+            {% else %}
+                <div class="current-weather">
+                    <div class="weather-icon">
+                        <img src="{{ weather.icon }}" alt="Weather icon">
+                    </div>
+                    <div class="weather-info">
+                        <h4>Today</h4>
+                        <p class="temperature">{{ weather.temperature }}°C</p>
+                        <p class="condition">{{ weather.description|title }}</p>
+                    </div>
+                    <div class="weather-details">
+                        <div class="weather-detail">
+                            <i class="fas fa-wind"></i>
+                            <span>{{ weather.wind_speed }} m/s</span>
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-tint"></i>
+                            <span>{{ weather.humidity }}%</span>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            <a href="{% url 'weather_dashboard' %}" class="btn-sm" style="margin-top:12px;">Full Forecast &rarr;</a>
+        </div>
+    </div>
+
+    <!-- Crop Monitoring Widget -->
+    <div class="dashboard-widget crop-widget">
+        <div class="widget-header">
+            <h3><i class="fas fa-seedling"></i> Crop Monitoring</h3>
+            <div class="widget-actions">
+                <button><i class="fas fa-sync-alt"></i></button>
+                <button><i class="fas fa-ellipsis-v"></i></button>
+            </div>
+        </div>
+        <div class="widget-content">
+            <div class="crop-status">
+                <div class="crop-item">
+                    <div class="crop-info">
+                        <h4>Wheat</h4>
+                        <p>Field A - 20 acres</p>
+                    </div>
+                    <div class="crop-progress">
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%;"></div>
+                        </div>
+                        <p>Growth: 75%</p>
+                    </div>
+                    <div class="crop-actions">
+                        <button class="btn btn-sm">Details</button>
+                    </div>
+                </div>
+                <div class="crop-item">
+                    <div class="crop-info">
+                        <h4>Corn</h4>
+                        <p>Field B - 15 acres</p>
+                    </div>
+                    <div class="crop-progress">
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 45%;"></div>
+                        </div>
+                        <p>Growth: 45%</p>
+                    </div>
+                    <div class="crop-actions">
+                        <button class="btn btn-sm">Details</button>
+                    </div>
+                </div>
+                <div class="crop-item">
+                    <div class="crop-info">
+                        <h4>Soybeans</h4>
+                        <p>Field C - 10 acres</p>
+                    </div>
+                    <div class="crop-progress">
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 60%;"></div>
+                        </div>
+                        <p>Growth: 60%</p>
+                    </div>
+                    <div class="crop-actions">
+                        <button class="btn btn-sm">Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="crop-alerts">
+                <h4>Alerts</h4>
+                <div class="alert-item warning">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>Potential pest detected in Field B</p>
+                </div>
+                <div class="alert-item info">
+                    <i class="fas fa-info-circle"></i>
+                    <p>Optimal time to fertilize Field A</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Livestock Widget -->
+    <div class="dashboard-widget livestock-widget">
+        <div class="widget-header">
+            <h3><i class="fas fa-cow"></i> Livestock Management</h3>
+            <div class="widget-actions">
+                <button><i class="fas fa-sync-alt"></i></button>
+                <button><i class="fas fa-ellipsis-v"></i></button>
+            </div>
+        </div>
+        <div class="widget-content">
+            <div class="livestock-summary">
+                <div class="summary-item">
+                    <h4>Total</h4>
+                    <p>120</p>
+                </div>
+                <div class="summary-item">
+                    <h4>Healthy</h4>
+                    <p>115</p>
+                </div>
+                <div class="summary-item">
+                    <h4>Attention</h4>
+                    <p>5</p>
+                </div>
+                <div class="summary-item">
+                    <h4>Pregnant</h4>
+                    <p>12</p>
+                </div>
+            </div>
+            <div class="livestock-alerts">
+                <h4>Recent Activity</h4>
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="fas fa-syringe"></i>
+                    </div>
+                    <div class="activity-info">
+                        <p>Vaccination scheduled for 15 cattle</p>
+                        <span>Tomorrow, 9:00 AM</span>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon">
+                        <i class="fas fa-weight"></i>
+                    </div>
+                    <div class="activity-info">
+                        <p>Weight check completed for 30 cattle</p>
+                        <span>Today, 11:30 AM</span>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon alert">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <div class="activity-info">
+                        <p>Cow #1042 showing reduced activity</p>
+                        <span>Today, 8:15 AM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Marketplace Widget -->
+    <div class="dashboard-widget marketplace-widget">
+        <div class="widget-header">
+            <h3><i class="fas fa-store"></i> Marketplace</h3>
+            <div class="widget-actions">
+                <button><i class="fas fa-sync-alt"></i></button>
+                <button><i class="fas fa-ellipsis-v"></i></button>
+            </div>
+        </div>
+        <div class="widget-content">
+            <div class="marketplace-tabs">
+                <button class="tab-btn active">Recent Orders</button>
+                <button class="tab-btn">Recommendations</button>
+                <button class="tab-btn">Price Alerts</button>
+            </div>
+            <div class="marketplace-orders">
+                <div class="order-item">
+                    <div class="order-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="order-info">
+                        <h4>Premium Wheat Seeds</h4>
+                        <p>500 kg - $1,200</p>
+                        <span class="order-status delivered">Delivered</span>
+                    </div>
+                    <div class="order-date">
+                        <p>May 10, 2023</p>
+                    </div>
+                </div>
+                <div class="order-item">
+                    <div class="order-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="order-info">
+                        <h4>Organic Fertilizer</h4>
+                        <p>20 bags - $850</p>
+                        <span class="order-status shipped">Shipped</span>
+                    </div>
+                    <div class="order-date">
+                        <p>May 8, 2023</p>
+                    </div>
+                </div>
+                <div class="order-item">
+                    <div class="order-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="order-info">
+                        <h4>Irrigation Equipment</h4>
+                        <p>5 items - $2,300</p>
+                        <span class="order-status processing">Processing</span>
+                    </div>
+                    <div class="order-date">
+                        <p>May 5, 2023</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tasks Widget -->
+    <div class="dashboard-widget tasks-widget">
+        <div class="widget-header">
+            <h3><i class="fas fa-tasks"></i> Tasks</h3>
+            <div class="widget-actions">
+                <button><i class="fas fa-plus"></i> Add Task</button>
+            </div>
+        </div>
+        <div class="widget-content">
+            <div class="task-list">
+                <div class="task-item">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task1">
+                        <label for="task1"></label>
+                    </div>
+                    <div class="task-content">
+                        <p>Apply fertilizer to Field A</p>
+                        <span class="task-date">Due: Today</span>
+                    </div>
+                    <div class="task-priority high">High</div>
+                </div>
+                <div class="task-item">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task2">
+                        <label for="task2"></label>
+                    </div>
+                    <div class="task-content">
+                        <p>Schedule veterinarian visit</p>
+                        <span class="task-date">Due: Tomorrow</span>
+                    </div>
+                    <div class="task-priority medium">Medium</div>
+                </div>
+                <div class="task-item">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task3" checked>
+                        <label for="task3"></label>
+                    </div>
+                    <div class="task-content completed">
+                        <p>Order new seeds</p>
+                        <span class="task-date">Completed</span>
+                    </div>
+                    <div class="task-priority low">Low</div>
+                </div>
+                <div class="task-item">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task4">
+                        <label for="task4"></label>
+                    </div>
+                    <div class="task-content">
+                        <p>Repair irrigation system in Field B</p>
+                        <span class="task-date">Due: May 15</span>
+                    </div>
+                    <div class="task-priority high">High</div>
+                </div>
+                <div class="task-item">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task5">
+                        <label for="task5"></label>
+                    </div>
+                    <div class="task-content">
+                        <p>Review monthly expenses</p>
+                        <span class="task-date">Due: May 20</span>
+                    </div>
+                    <div class="task-priority medium">Medium</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Calendar Widget -->
+    <div class="dashboard-widget calendar-widget">
+        <div class="widget-header">
+            <h3><i class="fas fa-calendar-alt"></i> Calendar</h3>
+            <div class="widget-actions">
+                <button><i class="fas fa-chevron-left"></i></button>
+                <span>May 2023</span>
+                <button><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+        <div class="widget-content">
+            <div class="calendar-header">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+            </div>
+            <div class="calendar-body">
+                <div class="calendar-day prev-month">30</div>
+                <div class="calendar-day">1</div>
+                <div class="calendar-day">2</div>
+                <div class="calendar-day">3</div>
+                <div class="calendar-day">4</div>
+                <div class="calendar-day">5</div>
+                <div class="calendar-day">6</div>
+                <div class="calendar-day">7</div>
+                <div class="calendar-day">8</div>
+                <div class="calendar-day">9</div>
+                <div class="calendar-day">10</div>
+                <div class="calendar-day">11</div>
+                <div class="calendar-day active">12</div>
+                <div class="calendar-day">13</div>
+                <div class="calendar-day event">14</div>
+                <div class="calendar-day event">15</div>
+                <div class="calendar-day">16</div>
+                <div class="calendar-day">17</div>
+                <div class="calendar-day">18</div>
+                <div class="calendar-day">19</div>
+                <div class="calendar-day">20</div>
+                <div class="calendar-day event">21</div>
+                <div class="calendar-day">22</div>
+                <div class="calendar-day">23</div>
+                <div class="calendar-day">24</div>
+                <div class="calendar-day">25</div>
+                <div class="calendar-day">26</div>
+                <div class="calendar-day">27</div>
+                <div class="calendar-day">28</div>
+                <div class="calendar-day">29</div>
+                <div class="calendar-day">30</div>
+                <div class="calendar-day">31</div>
+                <div class="calendar-day next-month">1</div>
+                <div class="calendar-day next-month">2</div>
+                <div class="calendar-day next-month">3</div>
+            </div>
+            <div class="upcoming-events">
+                <h4>Upcoming Events</h4>
+                <div class="event-item">
+                    <div class="event-date">
+                        <span class="day">14</span>
+                        <span class="month">May</span>
+                    </div>
+                    <div class="event-info">
+                        <h5>Soil Testing</h5>
+                        <p>Field A and B, 9:00 AM</p>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-date">
+                        <span class="day">15</span>
+                        <span class="month">May</span>
+                    </div>
+                    <div class="event-info">
+                        <h5>Veterinarian Visit</h5>
+                        <p>Cattle Barn, 2:00 PM</p>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-date">
+                        <span class="day">21</span>
+                        <span class="month">May</span>
+                    </div>
+                    <div class="event-info">
+                        <h5>Farmers Market</h5>
+                        <p>Downtown, 8:00 AM - 2:00 PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+{% endblock %}

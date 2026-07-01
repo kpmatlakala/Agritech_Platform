@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agricultural Marketplace - AgriTech Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="feature-pages.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Additional Marketplace-specific styles */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .product-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .product-content {
+            padding: 20px;
+        }
+        
+        .product-category {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+        
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+        
+        .product-price .original-price {
+            text-decoration: line-through;
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-right: 8px;
+        }
+        
+        .product-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .rating-stars {
+            color: #FFC107;
+            margin-right: 8px;
+        }
+        
+        .rating-count {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        .product-seller {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .seller-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .seller-name {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .verified-badge {
+            color: var(--primary-color);
+            margin-left: 5px;
+        }
+        
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .how-it-works-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .step-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin: 0 auto 20px;
+        }
+        
+        .step-card h3 {
+            margin-bottom: 15px;
+        }
+        
+        .step-card p {
+            color: var(--text-light);
+        }
+        
+        .step-card::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            right: -15px;
+            width: 30px;
+            height: 2px;
+            background-color: var(--primary-color);
+            display: none;
+        }
+        
+        .step-card:not(:last-child)::after {
+            display: block;
+        }
+        
+        .category-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .category-tab {
+            padding: 10px 20px;
+            background-color: var(--background-light);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        .category-tab.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .category-tab:hover:not(.active) {
+            background-color: var(--primary-light);
+        }
+        
+        .marketplace-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .marketplace-feature {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .marketplace-feature-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .marketplace-feature-icon i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .marketplace-feature-text h4 {
+            margin-bottom: 10px;
+        }
+        
+        .marketplace-feature-text p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        
+        @media (max-width: 768px) {
+            .step-card::after {
+                display: none;
+            }
+            
+            .category-tabs {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Agri<span>Tech</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="crop-monitoring.html">Crop Monitoring</a></li>
+                    <li><a href="livestock-management.html">Livestock Management</a></li>
+                    <li><a href="marketplace.html" class="active">Marketplace</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="login.html" class="nav-btn">Login</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Feature Hero Section -->
+    <section class="feature-hero">
+        <div class="container">
+            <div class="feature-hero-content">
+                <div class="breadcrumbs">
+                    <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <span>Marketplace</span>
+                </div>
+                <h1>Agricultural Marketplace</h1>
+                <p>Direct access to quality agricultural inputs at competitive prices, connecting farmers directly with trusted suppliers</p>
+                <div class="feature-hero-buttons">
+                    <a href="#products" class="btn btn-primary">Browse Products</a>
+                    <a href="register.html" class="btn btn-secondary">Join Marketplace</a>
+                </div>
+            </div>
+            <div class="feature-hero-image">
+                <img src="https://images.unsplash.com/photo-1595872342945-9a3100fe0434?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Agricultural marketplace">
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Overview Section -->
+    <section class="feature-overview">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Our Marketplace?</h2>
+                <p>Transforming how farmers source agricultural inputs</p>
+            </div>
+            <div class="overview-grid">
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Direct from Suppliers</h3>
+                    <p>Cut out middlemen and save 15-30% on agricultural inputs</p>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Quality Verified</h3>
+                    <p>All products undergo rigorous quality verification process</p>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Farm Delivery</h3>
+                    <p>Products delivered directly to your farm, saving time and effort</p>
+                </div>
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Farmer Reviews</h3>
+                    <p>Make informed decisions based on reviews from other farmers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Simple steps to source quality agricultural inputs</p>
+            </div>
+            <div class="how-it-works-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Browse Products</h3>
+                    <p>Explore our wide range of agricultural inputs from verified suppliers</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Place Order</h3>
+                    <p>Select products, quantities, and complete your purchase securely</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Receive Delivery</h3>
+                    <p>Get products delivered directly to your farm within the specified timeframe</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Share Feedback</h3>
+                    <p>Rate products and suppliers to help other farmers make informed decisions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Categories Section -->
+    <section id="products" class="product-categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Product Categories</h2>
+                <p>Everything you need for your farming operation</p>
+            </div>
+            <div class="category-tabs">
+                <button class="category-tab active">All Products</button>
+                <button class="category-tab">Seeds</button>
+                <button class="category-tab">Fertilizers</button>
+                <button class="category-tab">Pesticides</button>
+                <button class="category-tab">Equipment</button>
+                <button class="category-tab">Livestock Supplies</button>
+            </div>
+            <div class="product-grid">
+                <!-- Seeds -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1603197788269-c76bbc23b1de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Premium Wheat Seeds">
+                        <div class="product-badge">Best Seller</div>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">Seeds</div>
+                        <h3 class="product-title">Premium Wheat Seeds - High Yield Variety</h3>
+                        <div class="product-price">
+                            <span class="original-price">$65.00</span>
+                            $52.00 / 25kg
+                        </div>
+                        <div class="product-rating">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <div class="rating-count">(128)</div>
+                        </div>
+                        <div class="product-seller">
+                            <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="Seller" class="seller-avatar">
+                            <span class="seller-name">GreenField Seeds <i class="fas fa-check-circle verified-badge"></i></span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                            <a href="#" class="btn btn-outline">Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1595841696677-6489ff3f8cd1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Organic Corn Seeds">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">Seeds</div>
+                        <h3 class="product-title">Organic Corn Seeds - Non-GMO</h3>
+                        <div class="product-price">
+                            $48.50 / 20kg
+                        </div>
+                        <div class="product-rating">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <div class="rating-count">(86)</div>
+                        </div>
+                        <div class="product-seller">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Seller" class="seller-avatar">
+                            <span class="seller-name">Organic Harvest <i class="fas fa-check-circle verified-badge"></i></span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                            <a href="#" class="btn btn-outline">Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fertilizers -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Premium NPK Fertilizer">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">Fertilizers</div>
+                        <h3 class="product-title">Premium NPK Fertilizer 20-10-10</h3>
+                        <div class="product-price">
+                            <span class="original-price">$42.00</span>
+                            $36.75 / 50kg
+                        </div>
+                        <div class="product-rating">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="rating-count">(215)</div>
+                        </div>
+                        <div class="product-seller">
+                            <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Seller" class="seller-avatar">
+                            <span class="seller-name">FertileCrop <i class="fas fa-check-circle verified-badge"></i></span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                            <a href="#" class="btn btn-outline">Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1589928469706-222737e2cad6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Organic Compost">
+                        <div class="product-badge">Organic</div>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">Fertilizers</div>
+                        <h3 class="product-title">Organic Compost - OMRI Certified</h3>
+                        <div class="product-price">
+                            $28.50 / 40kg
+                        </div>
+                        <div class="product-rating">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <div class="rating-count">(94)</div>
+                        </div>
+                        <div class="product-seller">
+                            <img src="https://randomuser.me/api/portraits/women/42.jpg" alt="Seller" class="seller-avatar">
+                            <span class="seller-name">EcoGrow <i class="fas fa-check-circle verified-badge"></i></span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                            <a href="#" class="btn btn-outline">Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pesticides -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1599909366383-7940ee237a1c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Broad Spectrum Insecticide">
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">Pesticides</div>
+                        <h3 class="product-title">Broad Spectrum Insecticide - Low Environmental Impact</h3>
+                        <div class="product-price">
+                            $64.25 / 5L
+                        </div>
+                        <div class="product-rating">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <div class="rating-count">(76)</div>
+                        </div>
+                        <div class="product-seller">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Seller" class="seller-avatar">
+                            <span class="seller-name">CropGuard <i class="fas fa-check-circle verified-badge"></i></span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                            <a href="#" class="btn btn-outline">Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Equipment -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1500171925361-068eb5e3e856?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Precision Seeder">
+                        <div class="product-badge">New</div>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-category">Equipment</div>
+                        <h3 class="product-title">Precision Seeder - 6 Row</h3>
+                        <div class="product-price">
+                            <span class="original-price">$2,450.00</span>
+                            $2,199.00
+                        </div>
+                        <div class="product-rating">
+                            <div class="rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <div class="rating-count">(42)</div>
+                        </div>
+                        <div class="product-seller">
+                            <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Seller" class="seller-avatar">
+                            <span class="seller-name">FarmTech Equipment <i class="fas fa-check-circle verified-badge"></i></span>
+                        </div>
+                        <div class="product-actions">
+                            <a href="#" class="btn btn-primary">Add to Cart</a>
+                            <a href="#" class="btn btn-outline">Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="btn btn-primary">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketplace Features Section -->
+    <section class="marketplace-features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Marketplace Features</h2>
+                <p>Designed to make agricultural sourcing simple, transparent, and cost-effective</p>
+            </div>
+            <div class="marketplace-features">
+                <div class="marketplace-feature">
+                    <div class="marketplace-feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="marketplace-feature-text">
+                        <h4>Advanced Search & Filtering</h4>
+                        <p>Find exactly what you need with our powerful search and filtering options. Filter by product type, brand, price range, and more.</p>
+                    </div>
+                </div>
+                <div class="marketplace-feature">
+                    <div class="marketplace-feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="marketplace-feature-text">
+                        <h4>Secure Payments</h4>
+                        <p>Our secure payment system protects your transactions. Pay with confidence using credit cards, bank transfers, or mobile payments.</p>
+                    </div>
+                </div>
+                <div class="marketplace-feature">
+                    <div class="marketplace-feature-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="marketplace-feature-text">
+                        <h4>Bulk Ordering</h4>
+                        <p>Save more with bulk orders. Get volume discounts and special pricing for large quantities to reduce your input costs.</p>
+                    </div>
+                </div>
+                <div class="marketplace-feature">
+                    <div class="marketplace-feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="marketplace-feature-text">
+                        <h4>Verified Reviews</h4>
+                        <p>All reviews are from verified purchases. Get honest feedback from other farmers to make informed decisions.</p>
+                    </div>
+                </div>
+                <div class="marketplace-feature">
+                    <div class="marketplace-feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="marketplace-feature-text">
+                        <h4>Delivery Tracking</h4>
+                        <p>Track your orders in real-time. Know exactly when your products will arrive with our detailed tracking system.</p>
+                    </div>
+                </div>
+                <div class="marketplace-feature">
+                    <div class="marketplace-feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="marketplace-feature-text">
+                        <h4>Scheduled Purchases</h4>
+                        <p>Set up recurring orders for regular supplies. Never run out of essential inputs with automated purchasing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Assurance Section -->
+    <section class="quality-assurance">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Quality Assurance Process</h2>
+                <p>How we ensure you receive only the highest quality agricultural inputs</p>
+            </div>
+            <div class="feature-detail-item">
+                <div class="feature-detail-content">
+                    <div class="feature-detail-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="feature-detail-text">
+                        <h3>Rigorous Supplier Verification</h3>
+                        <p>We don't just let anyone sell on our marketplace. Every supplier undergoes a thorough verification process before being approved to sell products on our platform.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Business license and registration verification</li>
+                            <li><i class="fas fa-check"></i> Product certification review</li>
+                            <li><i class="fas fa-check"></i> Physical facility inspection</li>
+                            <li><i class="fas fa-check"></i> Product sample testing</li>
+                            <li><i class="fas fa-check"></i> Customer service evaluation</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="feature-detail-image">
+                    <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Quality assurance process">
+                </div>
+            </div>
+            <div class="feature-detail-item reverse">
+                <div class="feature-detail-content">
+                    <div class="feature-detail-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="feature-detail-text">
+                        <h3>Product Testing & Monitoring</h3>
+                        <p>We regularly test products sold on our marketplace to ensure they meet our quality standards and the specifications claimed by suppliers.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Random product sampling and testing</li>
+                            <li><i class="fas fa-check"></i> Germination testing for seeds</li>
+                            <li><i class="fas fa-check"></i> Nutrient content verification for fertilizers</li>
+                            <li><i class="fas fa-check"></i> Efficacy testing for pesticides</li>
+                            <li><i class="fas fa-check"></i> Equipment performance verification</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="feature-detail-image">
+                    <img src="https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Product testing">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials feature-testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Farmers Say</h2>
+                <p>Hear from farmers who source their agricultural inputs through our marketplace</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>I've saved over 20% on my seed costs by purchasing directly from verified suppliers on this marketplace. The quality is excellent, and I love being able to read reviews from other farmers before making a purchase.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="David Wilson">
+                        <div>
+                            <h4>David Wilson</h4>
+                            <p>Corn Farmer, Iowa</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>The direct delivery to my farm has saved me countless hours that I would have spent driving to agricultural supply stores. The tracking system is excellent, and I always know exactly when my orders will arrive.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Jennifer Martinez">
+                        <div>
+                            <h4>Jennifer Martinez</h4>
+                            <p>Vegetable Farmer, California</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>As an organic farmer, finding certified organic inputs at reasonable prices has always been a challenge. This marketplace has connected me with suppliers I never knew existed, and the quality verification process gives me peace of mind.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Thomas Brown">
+                        <div>
+                            <h4>Thomas Brown</h4>
+                            <p>Organic Farmer, Vermont</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-stats">
+                <div class="stat-item">
+                    <h3>15-30%</h3>
+                    <p>Average Cost Savings</p>
+                </div>
+                <div class="stat-item">
+                    <h3>5,000+</h3>
+                    <p>Products Available</p>
+                </div>
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Verified Suppliers</p>
+                </div>
+                <div class="stat-item">
+                    <h3>10,000+</h3>
+                    <p>Farmers Using Our Marketplace</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- For Suppliers Section -->
+    <section class="for-suppliers">
+        <div class="container">
+            <div class="section-header">
+                <h2>For Suppliers</h2>
+                <p>Expand your reach and connect directly with farmers</p>
+            </div>
+            <div class="feature-detail-item">
+                <div class="feature-detail-content">
+                    <div class="feature-detail-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="feature-detail-text">
+                        <h3>Become a Verified Supplier</h3>
+                        <p>Join our network of trusted agricultural suppliers and connect directly with thousands of farmers looking for quality inputs. Our marketplace provides a platform to showcase your products, build your brand, and grow your business.</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Reach thousands of farmers across the country</li>
+                            <li><i class="fas fa-check"></i> Eliminate middlemen and increase your margins</li>
+                            <li><i class="fas fa-check"></i> Gain valuable insights into farmer preferences</li>
+                            <li><i class="fas fa-check"></i> Build your brand reputation with verified reviews</li>
+                            <li><i class="fas fa-check"></i> Streamlined logistics and payment processing</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary">Apply to Become a Supplier</a>
+                    </div>
+                </div>
+                <div class="feature-detail-image">
+                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Supplier dashboard">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to common questions about our marketplace</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do you ensure product quality?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We have a rigorous supplier verification process that includes business license verification, product certification review, facility inspection, and product sample testing. Additionally, we regularly conduct random product testing to ensure ongoing quality compliance. Our review system also helps maintain quality as suppliers with poor reviews are removed from our platform.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What are the shipping and delivery options?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer direct farm delivery for all products. Delivery timeframes vary by product type and location, but are typically 2-5 business days for most items. Bulk orders may take longer. You can track your delivery in real-time through our platform, and you'll receive notifications at each stage of the shipping process.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>What payment methods do you accept?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept all major credit cards, bank transfers, and mobile payment options. For large orders, we also offer financing options through our agricultural lending partners. All payments are processed securely, and we never store your full credit card information on our servers.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Can I return products if I'm not satisfied?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we have a satisfaction guarantee policy. If you're not satisfied with a product, you can return it within 14 days of delivery for a full refund. For seeds and perishable items, we offer replacements if germination rates or quality doesn't meet the specified standards. Please note that custom or specially ordered items may have different return policies.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Do you offer bulk discounts?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, most products on our marketplace offer volume discounts for bulk purchases. The discount tiers vary by product and supplier, but are clearly displayed on each product page. Additionally, we offer seasonal promotions and group buying opportunities where farmers can pool their orders to access even better pricing.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I become a supplier on your marketplace?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>To become a supplier, you need to complete our supplier application process, which includes providing business documentation, product certifications, and samples for testing. Our team will review your application and conduct necessary verifications. Once approved, you'll receive training on how to use our supplier portal to list products, manage inventory, and process orders.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="feature-cta">
+        <div class="container">
+            <h2>Ready to Transform How You Source Agricultural Inputs?</h2>
+            <p>Join thousands of farmers already saving time and money through our marketplace</p>
+            <div class="cta-buttons">
+                <a href="register.html" class="btn btn-primary">Join Marketplace</a>
+                <a href="#products" class="btn btn-secondary">Browse Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>Agri<span>Tech</span></h3>
+                    <p>Revolutionizing agriculture through innovative technology solutions for farmers worldwide.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="crop-monitoring.html">Crop Monitoring</a></li>
+                        <li><a href="livestock-management.html">Livestock Management</a></li>
+                        <li><a href="marketplace.html">Marketplace</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Product Categories</h4>
+                    <ul>
+                        <li><a href="#">Seeds</a></li>
+                        <li><a href="#">Fertilizers</a></li>
+                        <li><a href="#">Pesticides</a></li>
+                        <li><a href="#">Equipment</a></li>
+                        <li><a href="#">Livestock Supplies</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to our newsletter for the latest updates and insights.</p>
+                    <form>
+                        <input type="email" placeholder="Your Email">
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 AgriTech Solutions. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
+
+        // Category Tabs
+        document.querySelectorAll('.category-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.category-tab').forEach(t => {
+                    t.classList.remove('active');
+                });
+                tab.classList.add('active');
+                // In a real implementation, this would filter the products
+                // For this demo, we're just changing the active state
+            });
+        });
+    </script>
+</body>
+</html>

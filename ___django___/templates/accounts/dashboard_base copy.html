@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AgriTech Solutions</title>
+    <link rel="stylesheet" href="/django_project/static/css/styles.css">
+    <link rel="stylesheet" href="/django_project/static/css/dashboar.css">
+    <link rel="stylesheet" href="/django_project/static/css/dashboard-sidebar.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Mobile Toggle Button -->
+        <button class="mobile-toggle" id="mobileToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <!-- Mobile Overlay -->
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+        
+        <!-- Dashboard Sidebar -->
+        <aside class="dashboard-sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <img src="https://via.placeholder.com/35" alt="AgriTech Logo">
+                    <h2>Agri<span>Tech</span></h2>
+                </div>
+                <button class="sidebar-toggle" id="sidebarToggle">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            </div>
+            
+            <div class="sidebar-user">
+                <div class="user-avatar">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User Avatar">
+                </div>
+                <div class="user-info">
+                    <h4 class="user-name">John Farmer</h4>
+                    <p class="user-role">Farm Owner</p>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <ul class="nav-items">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link active">
+                                <span class="nav-icon"><i class="fas fa-tachometer-alt"></i></span>
+                                <span class="nav-text">Dashboard</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h4 class="nav-section-title">Farm Management</h4>
+                    <ul class="nav-items">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-seedling"></i></span>
+                                <span class="nav-text">Crop Monitoring</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-cow"></i></span>
+                                <span class="nav-text">Livestock Management</span>
+                                <span class="nav-badge">3</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link dropdown-toggle" id="weatherDropdown">
+                                <span class="nav-icon"><i class="fas fa-cloud-sun"></i></span>
+                                <span class="nav-text">Weather Forecasting</span>
+                                <span class="nav-icon" style="margin-left: auto;"><i class="fas fa-chevron-down"></i></span>
+                            </a>
+                            <div class="nav-dropdown" id="weatherDropdownMenu">
+                                <a href="#" class="dropdown-item">Daily Forecast</a>
+                                <a href="#" class="dropdown-item">Weekly Forecast</a>
+                                <a href="#" class="dropdown-item">Weather Alerts</a>
+                                <a href="#" class="dropdown-item">Historical Data</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-tractor"></i></span>
+                                <span class="nav-text">Equipment Tracking</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-tasks"></i></span>
+                                <span class="nav-text">Task Management</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h4 class="nav-section-title">Analytics</h4>
+                    <ul class="nav-items">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-chart-line"></i></span>
+                                <span class="nav-text">Yield Analytics</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-chart-pie"></i></span>
+                                <span class="nav-text">Soil Health</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-dollar-sign"></i></span>
+                                <span class="nav-text">Financial Reports</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h4 class="nav-section-title">Marketplace</h4>
+                    <ul class="nav-items">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-shopping-cart"></i></span>
+                                <span class="nav-text">Shop</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-history"></i></span>
+                                <span class="nav-text">Order History</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-heart"></i></span>
+                                <span class="nav-text">Saved Items</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h4 class="nav-section-title">Community</h4>
+                    <ul class="nav-items">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-users"></i></span>
+                                <span class="nav-text">Farmer Network</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-comment-alt"></i></span>
+                                <span class="nav-text">Messages</span>
+                                <span class="nav-badge">5</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-calendar-alt"></i></span>
+                                <span class="nav-text">Events</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h4 class="nav-section-title">Account</h4>
+                    <ul class="nav-items">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-user-cog"></i></span>
+                                <span class="nav-text">Profile Settings</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-bell"></i></span>
+                                <span class="nav-text">Notifications</span>
+                                <span class="nav-badge">12</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-cog"></i></span>
+                                <span class="nav-text">Settings</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="login.html" class="nav-link">
+                                <span class="nav-icon"><i class="fas fa-sign-out-alt"></i></span>
+                                <span class="nav-text">Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="footer-links">
+                    <a href="#" class="footer-link" title="Help"><i class="fas fa-question-circle"></i></a>
+                    <a href="#" class="footer-link" title="Documentation"><i class="fas fa-book"></i></a>
+                    <a href="#" class="footer-link" title="Support"><i class="fas fa-headset"></i></a>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Dashboard Main Content -->
+        <main class="dashboard-main" id="main">
+            <div class="dashboard-header">
+                <h1>Welcome to Your AgriTech Dashboard</h1>
+                <p>Here's an overview of your farm's performance and activities</p>
+            </div>
+            
+            <!-- Dashboard content will go here -->
+            <div class="dashboard-content">
+                <!-- This is a placeholder for the dashboard content -->
+                <div class="dashboard-cards">
+                    <div class="dashboard-card">
+                        <div class="card-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Crop Health</h3>
+                            <p class="card-value">92%</p>
+                            <p class="card-status positive">↑ 3% from last week</p>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <div class="card-icon">
+                            <i class="fas fa-cloud-rain"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Soil Moisture</h3>
+                            <p class="card-value">78%</p>
+                            <p class="card-status negative">↓ 5% from last week</p>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <div class="card-icon">
+                            <i class="fas fa-thermometer-half"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Temperature</h3>
+                            <p class="card-value">24°C</p>
+                            <p class="card-status">Optimal range</p>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <div class="card-icon">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <div class="card-content">
+                            <h3>Sunlight</h3>
+                            <p class="card-value">8.5 hrs</p>
+                            <p class="card-status positive">↑ 1.2 hrs from yesterday</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-row">
+                    <div class="dashboard-col">
+                        <div class="dashboard-widget">
+                            <div class="widget-header">
+                                <h3>Upcoming Tasks</h3>
+                                <a href="#" class="widget-action">View All</a>
+                            </div>
+                            <div class="widget-content">
+                                <ul class="task-list">
+                                    <li class="task-item">
+                                        <div class="task-checkbox">
+                                            <input type="checkbox" id="task1">
+                                            <label for="task1"></label>
+                                        </div>
+                                        <div class="task-details">
+                                            <h4>Irrigation Check - North Field</h4>
+                                            <p>Today, 2:00 PM</p>
+                                        </div>
+                                        <div class="task-priority high">High</div>
+                                    </li>
+                                    <li class="task-item">
+                                        <div class="task-checkbox">
+                                            <input type="checkbox" id="task2">
+                                            <label for="task2"></label>
+                                        </div>
+                                        <div class="task-details">
+                                            <h4>Apply Fertilizer - Corn Field</h4>
+                                            <p>Tomorrow, 9:00 AM</p>
+                                        </div>
+                                        <div class="task-priority medium">Medium</div>
+                                    </li>
+                                    <li class="task-item">
+                                        <div class="task-checkbox">
+                                            <input type="checkbox" id="task3">
+                                            <label for="task3"></label>
+                                        </div>
+                                        <div class="task-details">
+                                            <h4>Equipment Maintenance</h4>
+                                            <p>May 18, 10:00 AM</p>
+                                        </div>
+                                        <div class="task-priority low">Low</div>
+                                    </li>
+                                    <li class="task-item">
+                                        <div class="task-checkbox">
+                                            <input type="checkbox" id="task4">
+                                            <label for="task4"></label>
+                                        </div>
+                                        <div class="task-details">
+                                            <h4>Livestock Vaccination</h4>
+                                            <p>May 20, 8:00 AM</p>
+                                        </div>
+                                        <div class="task-priority high">High</div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-col">
+                        <div class="dashboard-widget">
+                            <div class="widget-header">
+                                <h3>Weather Forecast</h3>
+                                <a href="#" class="widget-action">View Details</a>
+                            </div>
+                            <div class="widget-content">
+                                <div class="weather-today">
+                                    <div class="weather-icon">
+                                        <i class="fas fa-sun"></i>
+                                    </div>
+                                    <div class="weather-info">
+                                        <h4>Today</h4>
+                                        <p class="weather-temp">24°C / 18°C</p>
+                                        <p class="weather-desc">Sunny, clear skies</p>
+                                    </div>
+                                </div>
+                                <div class="weather-forecast">
+                                    <div class="forecast-day">
+                                        <p class="day">Mon</p>
+                                        <i class="fas fa-cloud-sun"></i>
+                                        <p class="temp">22°C</p>
+                                    </div>
+                                    <div class="forecast-day">
+                                        <p class="day">Tue</p>
+                                        <i class="fas fa-cloud"></i>
+                                        <p class="temp">20°C</p>
+                                    </div>
+                                    <div class="forecast-day">
+                                        <p class="day">Wed</p>
+                                        <i class="fas fa-cloud-rain"></i>
+                                        <p class="temp">19°C</p>
+                                    </div>
+                                    <div class="forecast-day">
+                                        <p class="day">Thu</p>
+                                        <i class="fas fa-cloud-showers-heavy"></i>
+                                        <p class="temp">17°C</p>
+                                    </div>
+                                    <div class="forecast-day">
+                                        <p class="day">Fri</p>
+                                        <i class="fas fa-cloud-sun"></i>
+                                        <p class="temp">21°C</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Sidebar Toggle Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const main = document.getElementById('main');
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            const mobileToggle = document.getElementById('mobileToggle');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+            
+            // Toggle sidebar on desktop
+            sidebarToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('collapsed');
+                main.classList.toggle('expanded');
+                
+                // Change icon direction
+                const icon = sidebarToggle.querySelector('i');
+                if (sidebar.classList.contains('collapsed')) {
+                    icon.classList.remove('fa-chevron-left');
+                    icon.classList.add('fa-chevron-right');
+                } else {
+                    icon.classList.remove('fa-chevron-right');
+                    icon.classList.add('fa-chevron-left');
+                }
+            });
+            
+            // Toggle sidebar on mobile
+            mobileToggle.addEventListener('click', function() {
+                sidebar.classList.toggle('mobile-open');
+                mobileOverlay.classList.toggle('active');
+            });
+            
+            // Close sidebar when clicking overlay
+            mobileOverlay.addEventListener('click', function() {
+                sidebar.classList.remove('mobile-open');
+                mobileOverlay.classList.remove('active');
+            });
+            
+            // Dropdown functionality
+            dropdownToggles.forEach(function(toggle) {
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const dropdownId = this.id;
+                    const dropdownMenu = document.getElementById(dropdownId + 'Menu');
+                    
+                    // Toggle the dropdown
+                    dropdownMenu.classList.toggle('open');
+                    
+                    // Toggle the icon
+                    const icon = this.querySelector('.fa-chevron-down, .fa-chevron-up');
+                    if (dropdownMenu.classList.contains('open')) {
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    } else {
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    }
+                });
+            });
+            
+            // Check for saved sidebar state
+            const savedState = localStorage.getItem('sidebarState');
+            if (savedState === 'collapsed') {
+                sidebar.classList.add('collapsed');
+                main.classList.add('expanded');
+                const icon = sidebarToggle.querySelector('i');
+                icon.classList.remove('fa-chevron-left');
+                icon.classList.add('fa-chevron-right');
+            }
+            
+            // Save sidebar state
+            function saveSidebarState() {
+                if (sidebar.classList.contains('collapsed')) {
+                    localStorage.setItem('sidebarState', 'collapsed');
+                } else {
+                    localStorage.setItem('sidebarState', 'expanded');
+                }
+            }
+            
+            sidebarToggle.addEventListener('click', saveSidebarState);
+        });
+    </script>
+</body>
+</html>
