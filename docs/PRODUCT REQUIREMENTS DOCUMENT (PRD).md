@@ -13,6 +13,17 @@ AFAP requires a comprehensive digital platform to strengthen smallholder farmer 
 
 The platform will serve as a single integrated digital backbone connecting farmers, agrodealers, input suppliers, financial institutions, and buyers (off-takers). It will be accessible via web, Android mobile, USSD, and SMS to ensure adoption across all user segments—including farmers with feature phones and limited connectivity.
 
+### **1.1 Project Objectives**
+
+The platform objectives are to:
+
+1. Improve farmer productivity through timely advisory, better planning, and input access.
+2. Digitise farmer identity and field data to support traceability and programme visibility.
+3. Expand financial inclusion via structured digital records and alternative credit scoring.
+4. Strengthen market access through aggregation, contracting, and buyer linkage workflows.
+5. Reduce manual operations for AFAP teams through real-time dashboards and automated reporting.
+6. Ensure inclusive access via mobile app, USSD, and SMS in low-connectivity conditions.
+
 ### **2\. Problem Statement**
 
 | **Challenge** | **Impact** |
@@ -64,6 +75,20 @@ The platform will serve as a single integrated digital backbone connecting farme
 | 4.7 | Capacity Building & Ecosystem Facilitation | Training for AFAP, CBAs, farmers, agrodealers; ongoing support and upgrades |
 | --- | --- | --- |
 
+### **4.1 Legacy-Inspired Future Features (Reference-Only)**
+
+The legacy Django app in `___django___` will be used as a behavior reference for future implementation details. These items are planned for future delivery and are not yet implemented in the new modular platform:
+
+| Legacy Reference Area | Future Feature Direction |
+| --- | --- |
+| Auth flows (`accounts`) | Reintroduce proven signup/signin/logout journey patterns in mobile, web, and API layers |
+| User profile model (`UserProfile`) | Adopt practical farmer profile baseline: identity, phone, farm type, farm size, module enablement flags |
+| Crop monitoring (`Crop`, `SensorData`) | Add crop dashboard with sensor metrics and trend views (soil moisture, temperature, humidity) |
+| Weather dashboard | Add location-driven weather insights and advisory prompts in farmer-facing screens |
+| Dashboard routing structure | Preserve clear module segmentation for crops, weather, and account features |
+
+Note: Legacy Django patterns are guidance for product behavior and domain shape, not framework-level code reuse.
+
 ### **5\. User Journeys (High-Level)**
 
 #### Journey A: Farmer Onboarding & Credit Application
@@ -80,10 +105,10 @@ The platform will serve as a single integrated digital backbone connecting farme
 
 #### Journey B: Input Order & Delivery
 
-1.  Agrodeaaler posts available stock on platform.
+1.  Agrodealer posts available stock on platform.
 2.  Farmer/CBA places order via USSD/SMS/App.
 3.  Platform aggregates demand across farmers.
-4.  Agrodeaaler fulfills order; logistics scheduled.
+4.  Agrodealer fulfills order; logistics scheduled.
 5.  Farmer confirms receipt; payment processed (cash or digital).
 
 #### Journey C: Commodity Sale & Market Access
