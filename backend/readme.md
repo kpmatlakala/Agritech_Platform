@@ -1,111 +1,49 @@
 # AgriTech Backend
 
-Node.js + Express API server for the AgriTech Platform.
+Node.js + Express TypeScript API for the AgriTech platform (currently in scaffold stage).
 
----
+## Current State
 
-## 🚀 Tech Stack
+Implemented today:
+- Express app bootstrap with CORS and JSON middleware.
+- Health endpoint at `GET /health`.
 
-* Node.js
-* Express.js (TypeScript)
-* PostgreSQL (Aiven)
-* Africa's Talking (USSD/SMS)
-* CORS
-* dotenv
+Planned next (informed by legacy Django flows):
+- auth and user profile endpoints,
+- crop monitoring endpoints,
+- weather aggregation endpoints,
+- farmer-focused reporting/export APIs.
 
----
+## Tech Stack
 
-## 📦 Setup
+- Node.js
+- TypeScript
+- Express
+- PostgreSQL client (`pg`)
+- `dotenv`, `cors`, `jsonwebtoken`, `bcryptjs`
 
-### 1. Install Dependencies
+## Setup
+
+From `backend/`:
 
 ```bash
 npm install
+npx ts-node src/index.ts
 ```
 
-### 2. Configure Environment Variables
+Optional hot-reload dev loop:
 
 ```bash
-cp .env.example .env
+npx nodemon --watch src --exec ts-node src/index.ts
 ```
 
-Edit the `.env` file and provide the required credentials.
+## API Surface (Current)
 
-### 3. Start the Development Server
+| Method | Endpoint | Purpose |
+| :----- | :------- | :------ |
+| `GET` | `/health` | Health check |
 
-```bash
-npm run dev
-```
-
----
-
-## 📡 API Endpoints
-
-| Method | Endpoint               | Purpose                       |
-| :----- | :--------------------- | :---------------------------- |
-| `POST` | `/api/farmer/register` | Register a new farmer         |
-| `GET`  | `/api/farmer/:id`      | Retrieve farmer details       |
-| `GET`  | `/api/farmers`         | List all farmers              |
-| `GET`  | `/api/farmers/export`  | Export farmer data as CSV     |
-| `POST` | `/ussd/callback`       | Africa's Talking USSD webhook |
-
----
-
-## ⚙️ Environment Variables
-
-See `.env.example` for the complete list of required environment variables.
-
-Typical variables include:
-
-```env
-PORT=3000
-DATABASE_URL=
-JWT_SECRET=
-AFRICASTALKING_USERNAME=
-AFRICASTALKING_API_KEY=
-```
-
----
-
-## 📜 Package Scripts
-
-```json
-{
-  "scripts": {
-    "dev": "nodemon src/index.ts",
-    "build": "tsc",
-    "start": "node dist/index.js"
-  }
-}
-```
-
----
-
-## 📁 Project Structure
-
-```text
-backend/
-├── src/
-│   ├── routes/
-│   ├── controllers/
-│   ├── services/
-│   ├── middleware/
-│   ├── models/
-│   └── index.ts
-├── .env.example
-├── package.json
-└── tsconfig.json
-```
-
----
-
-## 🩺 Health Check Endpoint
-
-```http
-GET /health
-```
-
-Response:
+Example response:
 
 ```json
 {
@@ -114,31 +52,26 @@ Response:
 }
 ```
 
----
+## Environment Variables
 
-## 📝 Example `src/index.ts`
+Current minimum:
 
-```typescript
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-
-dotenv.config();
-
-const app = express();
-const port = process.env.PORT || 3000;
-
-app.use(cors());
-app.use(express.json());
-
-app.get("/health", (_req, res) => {
-  res.json({
-    status: "ok",
-    timestamp: new Date().toISOString(),
-  });
-});
-
-app.listen(port, () => {
-  console.log(`🚀 Server running on port ${port}`);
-});
+```env
+PORT=3000
 ```
+
+As feature modules are added, this file will include DB and external integration keys.
+
+## Project Structure
+
+```text
+backend/
+  package.json
+  tsconfig.json
+  src/
+    index.ts
+```
+
+## Legacy Reference Inputs
+
+See `docs/LEGACY_COMPARISON_AND_BORROW_PLAN.md` for details about what is being adapted from the Django app under `___django___/`.
