@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { storage } from '@/utils/storage';  // ✅ Custom storage
+import { storage } from '@/utils/storage';
 import { apiClient } from '@/utils/api';
 import type { User, Agent, Farmer, AuthResponse } from '@/types';
 
@@ -18,12 +18,13 @@ export interface AuthState {
   onboardingCompleted: boolean;
 
   // Actions
-  login: (phoneNumber: string, password?: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<void>;  // ✅ Changed to email
   logout: () => Promise<void>;
   registerAgent: (data: {
-    phone_number: string;
+    email: string;              // ✅ Changed: email is required
     full_name: string;
-    email?: string;
+    phone_number?: string;
+    password: string;           // ✅ Added: password required for registration
     village?: string;
     district?: string;
   }) => Promise<void>;
@@ -45,10 +46,11 @@ export const useAuthStore = create<AuthState>()(
       error: null,
       onboardingCompleted: false,
 
-      login: async (phoneNumber: string, password?: string) => {
+      // ✅ Updated: login with email + password
+      login: async (email: string, password: string) => {
         set({ isLoading: true, error: null });
         try {
-          const response = await apiClient.login(phoneNumber, password);
+          const response = await apiClient.login(email, password);
 
           if (!response.success) {
             throw new Error(response.error || 'Login failed');
@@ -72,6 +74,7 @@ export const useAuthStore = create<AuthState>()(
         }
       },
 
+      // ✅ Updated: agent registration with email + password
       registerAgent: async (data) => {
         set({ isLoading: true, error: null });
         try {
@@ -175,7 +178,7 @@ export const useAuthStore = create<AuthState>()(
     }),
     {
       name: 'auth-store',
-      storage: createJSONStorage(() => storage),  // ✅ Use custom storage
+      storage: createJSONStorage(() => storage),
       partialize: (state) => ({
         token: state.token,
         user: state.user,

@@ -2,24 +2,22 @@ import { router } from 'expo-router';
 import { useRef, useState } from 'react';
 import {
   FlatList,
-  StyleSheet,
   Text,
-  TouchableOpacity,
   View,
   useWindowDimensions,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { PrimaryButton } from '@/components/ui/PrimaryButton';
 import { Screen } from '@/components/ui/Screen';
 import OnboardingPagination from '@/components/ui/OnboardingPagination';
 import { useAuthStore } from '@/store/useAuthStore';
-import { theme } from '@/constants/theme';
 
-// ✅ Onboarding page data
 const ONBOARDING_PAGES = [
   {
     id: '1',
     emoji: '🌾',
     title: 'Welcome to AgriTech',
+    kicker: 'For the field, not the office',
     subtitle:
       'Empowering smallholder farmers with digital tools for better farming, market access, and financial inclusion.',
   },
@@ -27,6 +25,7 @@ const ONBOARDING_PAGES = [
     id: '2',
     emoji: '📋',
     title: 'Register & Manage Farmers',
+    kicker: 'Capture once, use everywhere',
     subtitle:
       'Agents can register new farmers, capture GPS locations, and take photos — all offline. Farmers get their unique Digital ID instantly.',
   },
@@ -34,6 +33,7 @@ const ONBOARDING_PAGES = [
     id: '3',
     emoji: '🚀',
     title: 'Ready to Get Started?',
+    kicker: 'From profile to productivity',
     subtitle:
       'Join the AgriTech community. Register farmers, access advisory services, and connect to markets — all from your phone.',
   },
@@ -42,10 +42,13 @@ const ONBOARDING_PAGES = [
 export default function OnboardingScreen() {
   const { setOnboardingCompleted } = useAuthStore();
   const flatListRef = useRef<FlatList>(null);
-  const { width } = useWindowDimensions();
+  const { width: screenWidth } = useWindowDimensions();
+  const insets = useSafeAreaInsets();
   const [currentPage, setCurrentPage] = useState(0);
 
   const isLastPage = currentPage === ONBOARDING_PAGES.length - 1;
+  const pageWidth = screenWidth;
+  const isTablet = screenWidth >= 768;
 
   const handleSkip = async () => {
     await setOnboardingCompleted(true);
@@ -64,25 +67,45 @@ export default function OnboardingScreen() {
   };
 
   const handleScroll = (event: any) => {
-    const index = Math.round(event.nativeEvent.contentOffset.x / width);
+    const index = Math.round(event.nativeEvent.contentOffset.x / pageWidth);
     setCurrentPage(index);
   };
 
   const renderPage = ({ item, index }: { item: (typeof ONBOARDING_PAGES)[0]; index: number }) => (
-    <View style={[styles.page, { width }]}>
-      <View style={styles.content}>
-        <View style={styles.imagePlaceholder}>
-          <Text style={styles.imageEmoji}>{item.emoji}</Text>
+    <View style={{ width: pageWidth }} className="flex-1 justify-center items-center px-4 md:px-8">
+      <View className="w-full max-w-[400px] md:max-w-[600px] min-h-[380px] md:min-h-[480px] p-6 md:p-8 rounded-2xl border border-border bg-surface items-center justify-center gap-4 shadow-lg">
+        <View className="flex-row items-center justify-between w-full">
+          <Text className="text-xs font-bold uppercase tracking-wider text-secondary">
+            Step {index + 1}
+          </Text>
+          <Text className="text-xs font-semibold text-muted">
+            {item.kicker}
+          </Text>
         </View>
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.subtitle}>{item.subtitle}</Text>
+
+        <View className="w-36 h-36 md:w-48 md:h-48 rounded-full bg-surfaceSoft border border-border items-center justify-center">
+          <Text className="text-6xl md:text-7xl">{item.emoji}</Text>
+        </View>
+
+        <Text className="text-3xl md:text-4xl font-bold text-text text-center">
+          {item.title}
+        </Text>
+        <Text className="text-base md:text-lg text-muted text-center leading-relaxed px-2">
+          {item.subtitle}
+        </Text>
       </View>
     </View>
   );
 
   return (
-    <Screen contentStyle={styles.container}>
-      {/* Pages */}
+    <Screen
+      contentStyle={{
+        flex: 1,
+        justifyContent: 'space-between',
+        paddingVertical: 16,
+        paddingHorizontal: 0,
+      }}
+    >
       <FlatList
         ref={flatListRef}
         data={ONBOARDING_PAGES}
@@ -93,73 +116,30 @@ export default function OnboardingScreen() {
         showsHorizontalScrollIndicator={false}
         onScroll={handleScroll}
         scrollEventThrottle={16}
+        className="flex-1"
+        contentContainerStyle={{ paddingHorizontal: 0 }}
       />
 
       {/* Footer */}
-      <View style={styles.footer}>
+      <View
+        className="gap-4 items-center pb-4 pt-2"
+        style={{ paddingBottom: Math.max(insets.bottom || 16, 16) }}
+      >
         <OnboardingPagination currentPage={currentPage} totalPages={ONBOARDING_PAGES.length} />
+
         <PrimaryButton
           label={isLastPage ? 'Get Started' : 'Next'}
           onPress={handleNext}
+          variant="solid"
+          style={{
+            maxWidth: isTablet ? 600 : 400,
+          }}
         />
-        <Text style={styles.skipLink} onPress={handleSkip}>
+
+        <Text className="text-muted text-base font-semibold" onPress={handleSkip}>
           Skip
         </Text>
       </View>
     </Screen>
   );
 }
-
-// ✅ Shared styles — everything in one place
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'space-between',
-    paddingVertical: theme.spacing.xl,
-  },
-  page: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  content: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: theme.spacing.lg,
-    paddingHorizontal: theme.spacing.md,
-  },
-  imagePlaceholder: {
-    width: 180,
-    height: 180,
-    borderRadius: 90,
-    backgroundColor: theme.colors.surface,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  imageEmoji: {
-    fontSize: 72,
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: '700',
-    color: theme.colors.text,
-    textAlign: 'center',
-  },
-  subtitle: {
-    fontSize: 16,
-    color: theme.colors.muted,
-    textAlign: 'center',
-    lineHeight: 24,
-    paddingHorizontal: theme.spacing.md,
-  },
-  footer: {
-    gap: theme.spacing.md,
-    alignItems: 'center',
-    paddingBottom: theme.spacing.md,
-  },
-  skipLink: {
-    color: theme.colors.muted,
-    fontSize: 14,
-    fontWeight: '500',
-  },
-});

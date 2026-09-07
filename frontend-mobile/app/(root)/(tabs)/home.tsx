@@ -21,16 +21,27 @@ export default function HomeScreen() {
       <View style={globalStyles.header}>
         <View>
           <Text style={globalStyles.title}>AFAP Field</Text>
-          <Text style={globalStyles.subtitle}>Farmer registration and profiling</Text>
+          <Text style={globalStyles.subtitle}>Farmer registration and profiling made practical</Text>
         </View>
-        <TouchableOpacity style={styles.iconButton}>
-          <Ionicons name="notifications-outline" size={22} color={colors.secondary} />
+        <TouchableOpacity style={styles.iconButton} activeOpacity={0.85}>
+          <Ionicons name="notifications-outline" size={22} color={colors.accent} />
         </TouchableOpacity>
+      </View>
+
+      <View style={styles.heroCard}>
+        <View style={styles.heroHeader}>
+          <Text style={styles.heroLabel}>Today</Text>
+          <Text style={styles.heroPill}>Mock Mode</Text>
+        </View>
+        <Text style={styles.heroTitle}>Field operations are on track.</Text>
+        <Text style={styles.heroSubtitle}>
+          You can continue onboarding farmers safely while backend integration is in progress.
+        </Text>
       </View>
 
       <View style={styles.contextBanner}>
         <Ionicons name="cloud-offline-outline" size={16} color={colors.secondary} />
-        <Text style={styles.contextText}>Mock-data mode: safe for UX review before backend integration</Text>
+        <Text style={styles.contextText}>Offline-safe data mode enabled for design validation</Text>
       </View>
 
       <FarmerStats stats={stats} />
@@ -83,7 +94,9 @@ type QuickActionProps = {
 function QuickAction({ icon, label, color, onPress }: QuickActionProps) {
   return (
     <TouchableOpacity style={styles.quickAction} onPress={onPress} activeOpacity={0.85}>
-      <Ionicons name={icon} size={28} color={color} />
+      <View style={styles.quickIconWrap}>
+        <Ionicons name={icon} size={24} color={color} />
+      </View>
       <Text style={styles.quickLabel}>{label}</Text>
     </TouchableOpacity>
   );
@@ -94,18 +107,60 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: colors.header,
+    backgroundColor: colors.surface,
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
     borderColor: colors.border,
   },
+  heroCard: {
+    marginTop: 16,
+    padding: 16,
+    borderRadius: 18,
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  heroHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  heroLabel: {
+    color: colors.secondary,
+    fontSize: 12,
+    fontWeight: '700',
+    letterSpacing: 0.6,
+    textTransform: 'uppercase',
+  },
+  heroPill: {
+    backgroundColor: colors.header,
+    borderRadius: 999,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    fontSize: 11,
+    fontWeight: '700',
+    color: colors.textSecondary,
+  },
+  heroTitle: {
+    marginTop: 12,
+    color: colors.text,
+    fontSize: 24,
+    fontWeight: '800',
+    letterSpacing: -0.4,
+  },
+  heroSubtitle: {
+    marginTop: 8,
+    color: colors.textSecondary,
+    fontSize: 14,
+    lineHeight: 21,
+  },
   contextBanner: {
     marginTop: 14,
     paddingHorizontal: 12,
     paddingVertical: 10,
-    borderRadius: 10,
-    backgroundColor: colors.header,
+    borderRadius: 12,
+    backgroundColor: colors.surface,
     borderWidth: 1,
     borderColor: colors.border,
     flexDirection: 'row',
@@ -118,7 +173,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   link: {
-    color: colors.secondary,
+    color: colors.accent,
     fontSize: 14,
     fontWeight: '600',
   },
@@ -130,16 +185,24 @@ const styles = StyleSheet.create({
   quickAction: {
     flex: 1,
     backgroundColor: colors.surface,
-    borderRadius: 12,
+    borderRadius: 14,
     alignItems: 'center',
     paddingVertical: 14,
     borderWidth: 1,
     borderColor: colors.border,
     gap: 8,
   },
+  quickIconWrap: {
+    width: 42,
+    height: 42,
+    borderRadius: 21,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.header,
+  },
   quickLabel: {
     color: colors.text,
     fontSize: 12,
-    fontWeight: '600',
+    fontWeight: '700',
   },
 });

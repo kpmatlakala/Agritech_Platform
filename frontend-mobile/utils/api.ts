@@ -1,5 +1,5 @@
-import Constants from 'expo-constants';
-import { storage } from './storage';  // ✅ Cross-platform storage
+// import Constants from 'expo-constants';
+import { storage } from './storage';
 
 // Get API base URL from environment or use default
 const API_BASE_URL =
@@ -22,10 +22,8 @@ export class ApiClient {
 
   /**
    * Get authorization token from storage
-   * ✅ Uses cross-platform storage (localStorage on web, AsyncStorage on native)
    */
   async getToken(): Promise<string | null> {
-    // Return cached token if available
     if (this.token) return this.token;
 
     try {
@@ -40,7 +38,6 @@ export class ApiClient {
 
   /**
    * Save authorization token to storage
-   * ✅ Uses cross-platform storage
    */
   async saveToken(token: string): Promise<void> {
     try {
@@ -53,7 +50,6 @@ export class ApiClient {
 
   /**
    * Clear authorization token
-   * ✅ Uses cross-platform storage
    */
   async clearToken(): Promise<void> {
     try {
@@ -114,17 +110,20 @@ export class ApiClient {
 
   // ===== AUTH ENDPOINTS =====
 
-  async login(phoneNumber: string, password?: string): Promise<any> {
+  // ✅ Updated: login with email + password
+  async login(email: string, password: string): Promise<any> {
     return this.request('/auth/login', {
       method: 'POST',
-      body: JSON.stringify({ phone_number: phoneNumber, password }),
+      body: JSON.stringify({ email, password }),
     });
   }
 
+  // ✅ Updated: register agent with email + password
   async registerAgent(data: {
-    phone_number: string;
+    email: string;
     full_name: string;
-    email?: string;
+    password: string;
+    phone_number?: string;
     village?: string;
     district?: string;
   }): Promise<any> {
@@ -142,7 +141,6 @@ export class ApiClient {
     try {
       await this.request('/auth/logout', { method: 'POST' });
     } catch (error) {
-      // Ignore logout errors (e.g., if already logged out)
       console.warn('Logout API call failed:', error);
     }
     await this.clearToken();
@@ -209,19 +207,15 @@ export class ApiClient {
 
   /**
    * Upload file to cloud storage
-   * ✅ Works on both native and web
    */
   async uploadFile(uri: string, fieldName: string = 'file'): Promise<string> {
     const formData = new FormData();
 
-    // ✅ Handle both native (uri) and web (blob/file) formats
     if (typeof uri === 'string' && uri.startsWith('blob:')) {
-      // Web: fetch blob and append
       const response = await fetch(uri);
       const blob = await response.blob();
       formData.append(fieldName, blob, `photo-${Date.now()}.jpg`);
     } else {
-      // Native: use the uri directly
       formData.append(fieldName, {
         uri,
         type: 'image/jpeg',

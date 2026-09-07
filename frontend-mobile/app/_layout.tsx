@@ -1,3 +1,5 @@
+import '@/global.css';
+
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useEffect } from 'react';
 import { useFonts } from 'expo-font';
@@ -10,9 +12,11 @@ export { ErrorBoundary } from 'expo-router';
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
-  const [loaded, error] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
+  // const [loaded, error] = useFonts({
+  //   SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+  // });
+
+  const [loaded, error] = [true, null]; // Fake loaded state
 
   const { restoreToken } = useAuthStore();
 

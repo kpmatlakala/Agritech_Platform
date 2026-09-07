@@ -6,7 +6,7 @@ export default function Index() {
   const { onboardingCompleted, token } = useAuthStore();
 
   if (!onboardingCompleted) {
-    return <Redirect href="./onboarding" />;
+    return <Redirect href="./(onboarding)" />;
   }
 
   if (!token) {

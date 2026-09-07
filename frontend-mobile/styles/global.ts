@@ -1,17 +1,18 @@
 import { StyleSheet } from 'react-native';
 
 export const colors = {
-  background: '#f7faf6',
-  header: '#eef6eb',
+  background: '#f6f3ea',
+  header: '#ede5d4',
   surface: '#ffffff',
-  primary: '#2f9e44',
-  secondary: '#2a6f97',
-  success: '#2b8a3e',
-  warning: '#f08c00',
-  alert: '#c92a2a',
-  text: '#1f2a1f',
-  textSecondary: '#5c6b5c',
-  border: '#d9e7d6',
+  primary: '#2e7d4f',
+  secondary: '#8a6a2f',
+  accent: '#2f6c8f',
+  success: '#2e8b57',
+  warning: '#b7791f',
+  alert: '#b83a3a',
+  text: '#1f2a22',
+  textSecondary: '#66756d',
+  border: '#d8d1c2',
 };
 
 export const spacing = {
@@ -26,20 +27,21 @@ export const globalStyles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
-    paddingTop: 60,
+    paddingTop: 54,
     paddingHorizontal: spacing.md,
   },
   scrollContainer: {
     flexGrow: 1,
     backgroundColor: colors.background,
-    paddingTop: 60,
+    paddingTop: 54,
     paddingHorizontal: spacing.md,
     paddingBottom: spacing.xl,
   },
   title: {
-    fontSize: 30,
+    fontSize: 32,
     fontWeight: '800',
     color: colors.text,
+    letterSpacing: -0.4,
   },
   subtitle: {
     fontSize: 15,
@@ -47,11 +49,12 @@ export const globalStyles = StyleSheet.create({
     marginTop: spacing.xs,
   },
   sectionTitle: {
-    fontSize: 18,
+    fontSize: 19,
     fontWeight: '700',
     color: colors.text,
     marginTop: spacing.lg,
     marginBottom: spacing.md,
+    letterSpacing: -0.2,
   },
   header: {
     flexDirection: 'row',
@@ -67,17 +70,22 @@ export const globalStyles = StyleSheet.create({
   },
   card: {
     backgroundColor: colors.surface,
-    borderRadius: 14,
+    borderRadius: 16,
     padding: spacing.md,
     marginBottom: spacing.sm,
     borderWidth: 1,
     borderColor: colors.border,
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.06,
+    shadowRadius: 14,
+    elevation: 2,
   },
   input: {
     backgroundColor: colors.surface,
     color: colors.text,
     padding: spacing.md,
-    borderRadius: 10,
+    borderRadius: 12,
     fontSize: 16,
     marginTop: spacing.md,
     borderWidth: 1,
@@ -86,7 +94,7 @@ export const globalStyles = StyleSheet.create({
   button: {
     backgroundColor: colors.primary,
     padding: spacing.md,
-    borderRadius: 12,
+    borderRadius: 14,
     alignItems: 'center',
     marginTop: spacing.lg,
   },

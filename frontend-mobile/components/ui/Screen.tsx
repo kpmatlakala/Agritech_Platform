@@ -12,7 +12,12 @@ export function Screen({ children, scroll = false, contentStyle }: ScreenProps) 
   if (scroll) {
     return (
       <SafeAreaView style={styles.safeArea}>
-        <ScrollView contentContainerStyle={[styles.scrollContent, contentStyle]}>{children}</ScrollView>
+        <ScrollView
+          contentContainerStyle={[styles.scrollContent, contentStyle]}
+          showsVerticalScrollIndicator={false}
+        >
+          {children}
+        </ScrollView>
       </SafeAreaView>
     );
   }
@@ -27,7 +32,7 @@ export function Screen({ children, scroll = false, contentStyle }: ScreenProps) 
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: theme.colors.bg,
+    backgroundColor: theme.colors.background,
   },
   content: {
     flex: 1,
